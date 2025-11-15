@@ -7,33 +7,115 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
 :root {
-    --primary: #007BFF; /* modrá */
-    --accent: #FFD700;  /* žlutá */
+    --primary: #007BFF;
+    --accent: #FFD700;
     --bg: #ffffff;
-    --card: #f0f8ff;   /* světle modrá */
+    --card: #f0f8ff;
     --muted: #0f172a;
     --radius: 12px;
     font-family: 'Inter', sans-serif;
 }
-body { margin:0; background:var(--bg); color:var(--muted); line-height:1.6;}
-.wrap{ max-width:1200px; margin:0 auto; padding:24px;}
-header{ display:flex; justify-content:space-between; align-items:center; background:#ffffff; padding:10px 24px; box-shadow:0 2px 6px rgba(0,0,0,0.05); position:sticky; top:0; z-index:1000;}
-.brand{ display:flex; align-items:center; gap:10px;}
-.logo-img{ width:48px; height:48px; object-fit:contain; border-radius:8px;}
-nav ul{ display:flex; gap:20px; list-style:none; padding:0; margin:0;}
-nav a{ color:var(--muted); text-decoration:none; font-weight:600; transition:color 0.3s;}
-nav a:hover{ color:var(--primary);}
-h1, h2{ color:var(--primary);}
-.contact-section{ display:flex; flex-wrap:wrap; gap:30px; margin-top:32px;}
-.contact-card{ flex:1; background:var(--card); padding:20px; border-radius:var(--radius); min-width:280px; box-shadow:0 4px 12px rgba(0,0,0,0.08);}
-.contact-card h3{ margin-top:0; color:var(--primary);}
-.contact-card a{ color:var(--primary); text-decoration:none;}
-.contact-card a:hover{ text-decoration:underline;}
-.contact-card svg{ width:20px; height:20px; vertical-align:middle; margin-right:8px; fill:var(--primary);}
+body {
+    margin:0;
+    background:var(--bg);
+    color:var(--muted);
+    line-height:1.6;
+}
+.wrap {
+    max-width:1200px;
+    margin:0 auto;
+    padding:24px;
+}
+header {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:#ffffff;
+    padding:10px 24px;
+    box-shadow:0 2px 6px rgba(0,0,0,0.05);
+    position:sticky;
+    top:0;
+    z-index:1000;
+    flex-wrap: wrap;
+}
+.brand {
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+.logo-img {
+    width:48px;
+    height:48px;
+    object-fit:contain;
+    border-radius:8px;
+}
+nav ul {
+    display:flex;
+    gap:20px;
+    list-style:none;
+    padding:0;
+    margin:0;
+    flex-wrap: wrap;
+}
+nav li {
+    margin:0;
+}
+nav a {
+    color:var(--muted);
+    text-decoration:none;
+    font-weight:600;
+    transition:color 0.3s;
+}
+nav a:hover {
+    color:var(--primary);
+}
+h1, h2 {
+    color:var(--primary);
+}
+.contact-section {
+    display:flex;
+    flex-wrap:wrap;
+    gap:30px;
+    margin-top:32px;
+}
+.contact-card {
+    flex:1;
+    background:var(--card);
+    padding:20px;
+    border-radius:var(--radius);
+    min-width:280px;
+    box-shadow:0 4px 12px rgba(0,0,0,0.08);
+}
+.contact-card h3 {
+    margin-top:0;
+    color:var(--primary);
+}
+.contact-card a {
+    color:var(--primary);
+    text-decoration:none;
+}
+.contact-card a:hover {
+    text-decoration:underline;
+}
+.contact-card svg {
+    width:20px;
+    height:20px;
+    vertical-align:middle;
+    margin-right:8px;
+    fill:var(--primary);
+}
 @media(max-width:900px){
-    header{ flex-direction:column; gap:10px;}
-    nav ul{ flex-wrap:wrap; justify-content:center;}
-    .contact-section{ flex-direction:column;}
+    header {
+        flex-direction:column;
+        align-items:flex-start;
+    }
+    nav ul {
+        flex-direction:column;
+        gap:10px;
+    }
+    .contact-section {
+        flex-direction:column;
+    }
 }
 </style>
 </head>
@@ -50,6 +132,8 @@ h1, h2{ color:var(--primary);}
     <nav>
         <ul>
             <li><a href="/depona.cz/">Domů</a></li>
+            <li><a href="/depona.cz/o-nas">O nás</a></li>
+            <li><a href="/depona.cz/rozhodnuti">Rozhodnutí</a></li>
             <li><a href="/depona.cz/sluzby">Služby</a></li>
             <li><a href="/depona.cz/cenik">Ceník</a></li>
             <li><a href="/depona.cz/kontakt">Kontakt</a></li>
