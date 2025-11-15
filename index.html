@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DE.PO.NA Praha — Domů</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+    --accent:#0b6e4f;
+    --muted:#6b7280;
+    --bg:#f8fafc;
+    --card:#fff;
+    --radius:12px;
+    font-family:'Inter',sans-serif;
+}
+body{
+    margin:0;
+    background:var(--bg);
+    color:#0f172a;
+    line-height:1.6;
+}
+.wrap{
+    max-width:1200px;
+    margin:0 auto;
+    padding:24px;
+}
+header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:16px;
+    background:#fff;
+    padding:10px 24px;
+    box-shadow:0 2px 6px rgba(0,0,0,0.05);
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+.brand{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+.logo-img{
+    width:48px;
+    height:48px;
+    object-fit:contain;
+    border-radius:8px;
+}
+nav ul{
+    display:flex;
+    gap:20px;
+    list-style:none;
+    padding:0;
+    margin:0;
+}
+nav a{
+    color:var(--muted);
+    text-decoration:none;
+    font-weight:600;
+    transition:color 0.3s;
+}
+nav a:hover{
+    color:var(--accent);
+}
+.hero{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    justify-content:space-between;
+    margin-top:32px;
+    gap:24px;
+}
+.hero-text{
+    flex:1;
+}
+.hero h1{
+    font-size:42px;
+    margin-bottom:16px;
+}
+.hero p{
+    color:var(--muted);
+    font-size:18px;
+    margin-bottom:24px;
+}
+.cta{
+    background:var(--accent);
+    color:#fff;
+    padding:12px 20px;
+    border-radius:10px;
+    text-decoration:none;
+    font-weight:600;
+    transition:background 0.3s;
+}
+.cta:hover{
+    background:#09553c;
+}
+.hero img{
+    flex:1;
+    max-width:100%;
+    height:350px; /* pevná výška pro hero */
+    border-radius:12px;
+    object-fit:cover; /* ořezání obrázku pro lepší vzhled */
+}
+.section{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    margin-top:60px;
+    gap:32px;
+}
+.section:nth-child(even){
+    flex-direction:row-reverse;
+}
+.section img{
+    flex:1;
+    max-width:100%;
+    height:250px; /* pevná výška pro sekce */
+    border-radius:12px;
+    object-fit:cover; /* ořezání obrázku */
+}
+.section-text{
+    flex:1;
+}
+.section-text h2{
+    font-size:28px;
+    margin-bottom:16px;
+}
+.section-text p{
+    color:var(--muted);
+    font-size:16px;
+    margin-bottom:16px;
+}
+.section-text a{
+    color:var(--accent);
+    text-decoration:none;
+    font-weight:600;
+}
+.section-text a:hover{
+    text-decoration:underline;
+}
+.services{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:24px;
+    margin-top:40px;
+}
+.service{
+    background:var(--card);
+    padding:20px;
+    border-radius:var(--radius);
+    box-shadow:0 6px 20px rgba(2,6,23,0.08);
+    transition:transform 0.3s;
+    text-align:center;
+}
+.service:hover{
+    transform:translateY(-5px);
+}
+.service h3{
+    margin-bottom:10px;
+}
+footer{
+    margin-top:60px;
+    padding:36px 24px;
+    text-align:center;
+    color:var(--muted);
+    font-size:14px;
+    background:#e6f0ea;
+    border-top:1px solid #c3d6c9;
+}
+@media(max-width:900px){
+    .hero, .section{
+        flex-direction:column;
+    }
+    .hero img, .section img{
+        height:auto;
+    }
+}
+</style>
+</head>
+<body>
+<header class="wrap">
+    <div class="brand">
+        <img src="https://depona.cz/wp-content/uploads/2023/05/logo.jpg" alt="DE.PO.NA logo" class="logo-img">
+        <div>
+            <h1 style="margin:0;font-size:18px;">DE.PO.NA Praha</h1>
+            <div style="color:var(--muted);font-weight:600;font-size:12px;">Likvidace odpadu • Kontejnerová doprava</div>
+        </div>
+    </div>
+    <nav>
+        <ul>
+            <li><a href="/">Domů</a></li>
+            <li><a href="/sluzby">Služby</a></li>
+            <li><a href="/cenik">Ceník</a></li>
+            <li><a href="/kontakt">Kontakt</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main class="wrap">
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-text">
+            <h1>Spolehlivá likvidace odpadu a kontejnerová doprava</h1>
+            <p>Dlouholetá praxe, rychlé přistavení kontejnerů a férové ceny. Působíme v Praze a okolí.</p>
+            <a class="cta" href="/kontakt">Objednat kontejner</a>
+        </div>
+        <img src="https://depona.cz/wp-content/uploads/2025/01/depona-doprava7.jpg" alt="kontejner">
+    </section>
+
+    <!-- Sekce Kontejnerová doprava -->
+    <section class="section">
+        <img src="https://depona.cz/wp-content/uploads/2025/01/depona-doprava4.jpg" alt="Kontejnerová doprava">
+        <div class="section-text">
+            <h2>Kontejnerová doprava</h2>
+            <p>Rychlé přistavení kontejnerů různých velikostí (3–12 m³). Odvoz odpadu z vaší stavby nebo domácnosti.</p>
+            <a href="/sluzby">Zjistit více →</a>
+        </div>
+    </section>
+
+    <!-- Sekce Likvidace odpadu -->
+    <section class="section">
+        <img src="https://depona.cz/wp-content/uploads/2025/01/depona-doprava3.jpg" alt="Likvidace odpadu">
+        <div class="section-text">
+            <h2>Likvidace odpadu</h2>
+            <p>Ekologická likvidace stavebního i komunálního odpadu s důrazem na recyklaci a správné zpracování.</p>
+            <a href="/sluzby">Zjistit více →</a>
+        </div>
+    </section>
+
+    <!-- Sekce Nákladní doprava -->
+    <section class="section">
+        <img src="https://depona.cz/wp-content/uploads/2025/01/depona-doprava2.jpg" alt="Nákladní doprava">
+        <div class="section-text">
+            <h2>Nákladní doprava</h2>
+            <p>Přeprava sypkých materiálů, zeminy, štěrku a kameniva. Nabízíme spolehlivou a bezpečnou dopravu po celé Praze.</p>
+            <a href="/sluzby">Zjistit více →</a>
+        </div>
+    </section>
+
+    <!-- Sekce Rychlé služby -->
+    <section class="services">
+        <div class="service">
+            <h3>Kontejnery 3–12 m³</h3>
+            <p>Rychlé přistavení a odvoz dle domluvy.</p>
+        </div>
+        <div class="service">
+            <h3>Likvidace odpadu</h3>
+            <p>Stavební a komunální odpad, recyklace a ekologická likvidace.</p>
+        </div>
+        <div class="service">
+            <h3>Nákladní doprava</h3>
+            <p>Přeprava štěrku, kameniva, zeminy a sypkých materiálů.</p>
+        </div>
+    </section>
+
+</main>
+
+<footer>
+&copy; DE.PO.NA Praha | Telefon: +420 777 349 447 | Email: depona@depona.cz
+</footer>
+</body>
+</html>
