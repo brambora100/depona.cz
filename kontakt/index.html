@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>DE.PO.NA Praha, s.r.o. — Kontakt</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<!-- Favicon -->
+<link rel="icon" type="image/png" href="https://hokejiceksite.github.io/depona.cz/files/svg/info.svg">
 <style>
 :root {
     --primary: #007BFF;
@@ -143,6 +145,7 @@ h1, h2 {
 <main class="wrap">
     <h1>Kontakt</h1>
     <div class="contact-section">
+
         <!-- Otevírací doba -->
         <div class="contact-card">
             <h3>Otevírací doba</h3>
@@ -188,7 +191,7 @@ h1, h2 {
             <p>
                 <img class="icon" src="https://hokejiceksite.github.io/depona.cz/files/svg/clovek.svg" alt="Jednatelka">
                 Jarmila Bílková<br>
-                Tel: <a href="tel:+420777654748">777 654 748</a>
+                Tel: <a href="tel:+420777654748">777 654 748</a><br>
                 Email: <a href="mailto:depona@depona.cz">depona@depona.cz</a>
             </p>
         </div>
@@ -204,16 +207,27 @@ h1, h2 {
             </p>
         </div>
 
-        <!-- Fakturační údaje -->
-        <div class="contact-card">
-            <h3>Fakturační údaje</h3>
-            <p>
-                <img class="icon" src="https://hokejiceksite.github.io/depona.cz/files/svg/info.svg" alt="Fakturační údaje">
-                DE.PO.NA Praha, s.r.o.<br>
-                IČ: 27208036, DIČ: CZ27208036<br>
-                Sídlo: Průmyslová 565, 252 42 Jesenice u Prahy
-            </p>
+        <!-- Fakturační údaje + mapa -->
+        <div class="contact-card" style="display:flex; flex-wrap:wrap; gap:20px; align-items:flex-start;">
+            <!-- Fakturační údaje vlevo -->
+            <div style="flex:1; min-width:280px;">
+                <h3>Fakturační údaje</h3>
+                <p>
+                    <img class="icon" src="https://hokejiceksite.github.io/depona.cz/files/svg/info.svg" alt="Fakturační údaje">
+                    DE.PO.NA Praha, s.r.o.<br>
+                    IČ: 27208036, DIČ: CZ27208036<br>
+                    Sídlo: Průmyslová 565, 252 42 Jesenice u Prahy
+                </p>
+            </div>
+            <!-- Mapa vpravo -->
+            <div style="flex:1; min-width:280px; height:200px;">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2604.0898671826843!2d14.449040815661296!3d49.99499797939803!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470b98c0a36c7a4d%3A0x1f41b6b3e3d2f3a!2sPr%C5%AFmyslov%C3%A1%20565%2C%20252%2042%20Jesenice%20u%20Prahy!5e0!3m2!1scs!2scz!4v1697155156798!5m2!1scs!2scz"
+                    width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
         </div>
+
     </div>
 </main>
 
