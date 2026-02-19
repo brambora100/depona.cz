@@ -1,1 +1,204 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ceník | DEPONA PRAHA s.r.o.</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --depona-blue: #0A224D;
+            --depona-yellow: #FFC107;
+            --white: #FFFFFF;
+        }
 
+        body { font-family: 'Montserrat', sans-serif; margin: 0; color: #333; line-height: 1.6; background-color: var(--white); }
+
+        /* Navigace */
+        nav {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 20px 5%; background: var(--white); border-bottom: 4px solid var(--depona-blue);
+            position: sticky; top: 0; z-index: 1000;
+        }
+        .logo-text { font-size: 2.4rem; font-weight: 900; color: var(--depona-blue); text-decoration: none; letter-spacing: 1px; }
+        .logo-text span { color: var(--depona-yellow); }
+        .nav-links a { text-decoration: none; color: var(--depona-blue); font-weight: 700; margin-left: 35px; text-transform: uppercase; font-size: 1rem; transition: 0.3s; }
+        .nav-links a:hover { color: var(--depona-yellow); }
+
+        /* Hero */
+        .pricing-hero {
+            height: 250px; background: linear-gradient(rgba(10, 34, 77, 0.7), rgba(10, 34, 77, 0.7)), url('https://i.imgur.com/EFvYX6r.jpeg') center/cover;
+            display: flex; align-items: center; justify-content: center; color: white; text-align: center;
+        }
+        .pricing-hero h1 { font-size: 4rem; font-weight: 900; text-transform: uppercase; margin: 0; }
+
+        /* Obsah */
+        .pricing-content { padding: 60px 5%; max-width: 1600px; margin: 0 auto; }
+        .table-section { margin-bottom: 60px; }
+        .table-section h2 { color: var(--depona-blue); font-size: 2.2rem; font-weight: 900; text-transform: uppercase; margin-bottom: 25px; border-left: 10px solid var(--depona-yellow); padding-left: 20px; }
+        
+        .price-table { width: 100%; border-collapse: collapse; font-size: 1.1rem; box-shadow: 0 10px 30px rgba(0,0,0,0.05); margin-bottom: 15px; }
+        .price-table th { background: var(--depona-blue); color: white; text-align: left; padding: 20px; text-transform: uppercase; font-size: 0.9rem; }
+        .price-table td { padding: 15px 20px; border-bottom: 1px solid #eee; }
+        .price-table tr:nth-child(even) td { background: #f9f9f9; }
+        .val-bold { font-weight: 900; color: var(--depona-blue); text-align: right; white-space: nowrap; }
+
+        .warning-box { background: #fff3cd; padding: 20px; border-radius: 8px; font-weight: 700; margin-bottom: 40px; border-left: 5px solid var(--depona-yellow); }
+        
+        /* Spodní info sekce */
+        .footer-info-blocks { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 50px; }
+        .info-card { background: #f4f7f9; padding: 30px; border-radius: 15px; border-bottom: 5px solid var(--depona-blue); }
+        .info-card h3 { color: var(--depona-blue); margin-top: 0; text-transform: uppercase; font-weight: 900; }
+        .info-card p { font-weight: 700; margin-bottom: 0; }
+
+        /* Patička */
+        .footer-dark { background: #071630; color: white; padding: 80px 5% 40px; display: grid; grid-template-columns: 1fr 1fr 1.5fr; gap: 60px; margin-top: 80px; }
+        .footer-col h4 { color: var(--depona-yellow); margin-bottom: 25px; text-transform: uppercase; font-weight: 900; font-size: 1.2rem; }
+        .footer-col p { margin: 10px 0; color: #e0e0e0; }
+        .map-container { width: 100%; height: 350px; border-radius: 10px; overflow: hidden; }
+        .footer-bottom { grid-column: 1 / -1; text-align: center; padding-top: 40px; border-top: 1px solid rgba(255,255,255,0.1); color: #888; font-size: 0.9rem; }
+
+        @media (max-width: 1024px) { 
+            .footer-dark, .footer-info-blocks { grid-template-columns: 1fr; } 
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="index.html" class="logo-text">DEPONA<span>.</span></a>
+    <div class="nav-links">
+        <a href="sluzby.html">Služby</a>
+        <a href="cenik.html">Ceník</a>
+        <a href="rozhodnuti.html">Rozhodnutí</a>
+        <a href="kontakt.html">Kontakt</a>
+    </div>
+</nav>
+
+<header class="pricing-hero">
+    <h1>Ceník</h1>
+</header>
+
+<div class="pricing-content">
+
+    <div class="table-section">
+        <h2>Příjem odpadů</h2>
+        <table class="price-table">
+            <thead>
+                <tr><th>TYP</th><th>Kategorie</th><th style="text-align: right;">Cena / 1t bez DPH</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>17 01 01 – Beton</td><td>O</td><td class="val-bold">570,- Kč</td></tr>
+                <tr><td>17 01 02 – Cihly</td><td>O</td><td class="val-bold">570,- Kč</td></tr>
+                <tr><td>17 01 03 – Tašky a keramické výrobky</td><td>O</td><td class="val-bold">570,- Kč</td></tr>
+                <tr><td>17 01 07 – Směsi betonu, cihel, tašek a keramiky</td><td>O</td><td class="val-bold">570,- Kč</td></tr>
+                <tr><td>17 05 04 – Zemina a kamení</td><td>O</td><td class="val-bold">430,- Kč</td></tr>
+                <tr><td>17 05 06 – Vytěžená hlušina</td><td>O</td><td class="val-bold">430,- Kč</td></tr>
+                <tr><td>20 02 01 – Biologicky rozložitelný odpad</td><td>O</td><td class="val-bold">1 100,- Kč</td></tr>
+                <tr><td>20 02 02 – Zemina a kameny</td><td>O</td><td class="val-bold">430,- Kč</td></tr>
+                <tr><td>20 03 01 – Směsný komunální odpad</td><td>O</td><td class="val-bold">3 900,- Kč</td></tr>
+                <tr><td>17 09 04 – Směsné stavební a demoliční odpady</td><td>O</td><td class="val-bold">3 900,- Kč</td></tr>
+                <tr><td>20 03 07 – Objemný odpad</td><td>O</td><td class="val-bold">3 900,- Kč</td></tr>
+            </tbody>
+        </table>
+        <div class="warning-box">Pokud bude v jedné dodávce obsažen i jiný odpad, bude automaticky účtována cena odpadu 17 09 04!</div>
+    </div>
+
+    <div class="table-section">
+        <h2>Ceník materiálů</h2>
+        <table class="price-table">
+            <thead>
+                <tr><th>Materiál</th><th style="text-align: right;">Cena / 1t bez DPH</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Písek zásypový 0-8</td><td class="val-bold">370,- Kč</td></tr>
+                <tr><td>Písek betonářský 04</td><td class="val-bold">450,- Kč</td></tr>
+                <tr><td>Písek univerzální říční</td><td class="val-bold">490,- Kč</td></tr>
+                <tr><td>Štěrk 4-8</td><td class="val-bold">810,- Kč</td></tr>
+                <tr><td>Štěrk 8-16, 16-32, 16-22, 32-63</td><td class="val-bold">645,- Kč</td></tr>
+                <tr><td>Štěrk 0-32, 0-63 *</td><td class="val-bold">480,- Kč</td></tr>
+                <tr><td>Suťový recyklát 0-8, 12-35, 35-100 *</td><td class="val-bold">20,- Kč</td></tr>
+                <tr><td>Tříděná zemina – základní</td><td class="val-bold">200,- Kč</td></tr>
+                <tr><td>Zahradnický substrát (trávníkový / zeleninový) *</td><td class="val-bold">1 200 / 1 400,- Kč</td></tr>
+            </tbody>
+        </table>
+        <p>* Na objednání. Ceny bez 21% DPH. Veškerý materiál vážíme na váze LESYCO.</p>
+    </div>
+
+    <div class="table-section">
+        <h2>Doprava a stroje</h2>
+        <table class="price-table">
+            <thead>
+                <tr><th>Typ vozidla / stroje</th><th>za Hodinu</th><th style="text-align: right;">za KM</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>VOLVO FH / FM tahač + návěs</td><td>1 500,- Kč</td><td class="val-bold">60,- Kč</td></tr>
+                <tr><td>IVECO nosič kontejneru 12 t</td><td>800,- Kč</td><td class="val-bold">35,- Kč</td></tr>
+                <tr><td>Nakladač LIEBHERR 524</td><td>1 200,- Kč</td><td class="val-bold">–</td></tr>
+                <tr><td>Nakladač LIEBHERR 542</td><td>1 500,- Kč</td><td class="val-bold">–</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="table-section">
+        <h2>Kontejnery (Kompletní ceny)</h2>
+        <table class="price-table">
+            <thead>
+                <tr><th>Typ kontejneru a náklad</th><th style="text-align: right;">Cena bez DPH</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>3 m³ Zemina – odpad</td><td class="val-bold">2 900,- Kč</td></tr>
+                <tr><td>3 m³ Stavební suť – odpad</td><td class="val-bold">3 500,- Kč</td></tr>
+                <tr><td>6 m³ Lehká stavební suť</td><td class="val-bold">4 200,- Kč</td></tr>
+                <tr><td>6 m³ Směsný – objemný odpad</td><td class="val-bold">6 200,- Kč</td></tr>
+                <tr><td>10 m³ Lehká stavební suť (YTONG)</td><td class="val-bold">6 200,- Kč</td></tr>
+                <tr><td>9 m³ Směsný – objemný odpad</td><td class="val-bold">8 200,- Kč</td></tr>
+                <tr><td>13,5 m³ Směsný – objemný odpad</td><td class="val-bold">12 600,- Kč</td></tr>
+            </tbody>
+        </table>
+        <p>Při přistavení kontejneru na dobu delší než 3 dny účtujeme 100 Kč/den.</p>
+    </div>
+
+    <div class="footer-info-blocks">
+        <div class="info-card">
+            <h3>Vážení vozidel</h3>
+            <p>Nově nabízíme možnost samostatného vážení vozidel do celkové hmotnosti 30t na naší váze LESYCO.</p>
+        </div>
+        <div class="info-card">
+            <h3>Služby na provozovně</h3>
+            <p>Přijímáme platební karty. Čekání si můžete zpříjemnit kávou značky Dallmayr Kaffee.</p>
+        </div>
+    </div>
+</div>
+
+<footer class="footer-dark">
+    <div class="footer-col">
+        <h4>Společnost</h4>
+        <p><strong>DE.PO.NA PRAHA s.r.o.</strong></p>
+        <p>Specialista na autodopravu a nakládání s odpady. Provozovna Kunratice funguje na základě prodlouženého usnesení MHMP 2013094/2024.</p>
+        <p><strong>IČO:</strong> 27208036</p>
+    </div>
+
+    <div class="footer-col">
+        <h4>Dispečink</h4>
+        <p><strong>Adresa:</strong> Pramenná 3, 148 00 Praha 4</p>
+        <p><strong>Mobil:</strong> 777 349 001</p>
+        <p><strong>Otevírací doba:</strong><br>
+           Po – Pá: 7:00 – 15:30<br>
+           So: 8:00 – 13:00</p>
+    </div>
+
+    <div class="footer-col">
+        <h4>Naše poloha</h4>
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2564.085816766068!2d14.4844627!3d50.0097148!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470b916053303691%3A0x6a05e557297e6417!2zUHJhbWVubsOhIDMsIDE0OCAwMCBQcmFoYS1LdW5yYXRpY2U!5e0!3m2!1scs!2scz!4v1710000000000!5m2!1scs!2scz" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        © 2026 DE.PO.NA PRAHA s.r.o. | Všechna práva vyhrazena.
+    </div>
+</footer>
+
+</body>
+</html>
