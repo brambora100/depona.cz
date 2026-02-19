@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rozhodnutí | DEPONA PRAHA s.r.o.</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --depona-blue: #0A224D;
+            --depona-yellow: #FFC107;
+            --white: #FFFFFF;
+        }
+
+        body { font-family: 'Montserrat', sans-serif; margin: 0; background-color: #f4f7f9; color: #333; }
+
+        /* Navigace */
+        nav {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 20px 5%; background: var(--white); border-bottom: 4px solid var(--depona-blue);
+            position: sticky; top: 0; z-index: 1000;
+        }
+        .logo-text { font-size: 2.4rem; font-weight: 900; color: var(--depona-blue); text-decoration: none; letter-spacing: 1px; }
+        .logo-text span { color: var(--depona-yellow); }
+        .nav-links a { text-decoration: none; color: var(--depona-blue); font-weight: 700; margin-left: 35px; text-transform: uppercase; font-size: 1rem; transition: 0.3s; }
+        .nav-links a:hover { color: var(--depona-yellow); }
+
+        /* Hero sekce */
+        .hero {
+            height: 200px; background: var(--depona-blue);
+            display: flex; align-items: center; justify-content: center; color: white;
+        }
+        .hero h1 { font-size: 3rem; font-weight: 900; text-transform: uppercase; margin: 0; }
+
+        /* Galerie fotek */
+        .document-container {
+            padding: 60px 5%;
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+        .document-container img {
+            width: 100%;
+            height: auto;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-radius: 5px;
+            background: white;
+        }
+
+        /* Patička */
+        .footer-dark { background: #071630; color: white; padding: 80px 5% 40px; display: grid; grid-template-columns: 1fr 1fr 1.5fr; gap: 60px; margin-top: 60px; }
+        .footer-col h4 { color: var(--depona-yellow); margin-bottom: 25px; text-transform: uppercase; font-weight: 900; font-size: 1.2rem; }
+        .footer-col p { margin: 10px 0; color: #e0e0e0; }
+        .map-container { width: 100%; height: 300px; border-radius: 10px; overflow: hidden; }
+        .footer-bottom { grid-column: 1 / -1; text-align: center; padding-top: 40px; border-top: 1px solid rgba(255,255,255,0.1); color: #888; font-size: 0.9rem; }
+
+        @media (max-width: 1024px) { .footer-dark { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="index.html" class="logo-text">DEPONA<span>.</span></a>
+    <div class="nav-links">
+        <a href="sluzby.html">Služby</a>
+        <a href="cenik.html">Ceník</a>
+        <a href="rozhodnuti.html">Rozhodnutí</a>
+        <a href="kontakt.html">Kontakt</a>
+    </div>
+</nav>
+
+<header class="hero">
+    <h1>Úřední rozhodnutí</h1>
+</header>
+
+<main class="document-container">
+    <img src="image_11bc57.png" alt="Rozhodnutí 1">
+    <img src="image_11c6c5.png" alt="Rozhodnutí 2">
+    <img src="image_124663.png" alt="Rozhodnutí 3">
+</main>
+
+<footer class="footer-dark">
+    <div class="footer-col">
+        <h4>Společnost</h4>
+        <p><strong>DE.PO.NA PRAHA s.r.o.</strong></p>
+        <p>Provozovna Kunratice funguje na základě prodlouženého usnesení MHMP 2013094/2024.</p>
+        <p><strong>IČO:</strong> 27208036</p>
+    </div>
+
+    <div class="footer-col">
+        <h4>Dispečink</h4>
+        <p><strong>Adresa:</strong> Pramenná 3, 148 00 Praha 4</p>
+        <p><strong>Mobil:</strong> 777 349 001</p>
+        <p><strong>Otevírací doba:</strong><br>
+           Po – Pá: 7:00 – 15:30<br>
+           So: 8:00 – 13:00</p>
+    </div>
+
+    <div class="footer-col">
+        <h4>Naše poloha</h4>
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2564.085811326442!2d14.4823485!3d50.0090403!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470b93d0383783a5%3A0x70529944d6c469f3!2zUHJhbWVubsOhIDMsIDE0OCAwMCBQcmFoYS1LdW5yYXRpY2U!5e0!3m2!1scs!2scz!4v1710000000000!5m2!1scs!2scz" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        © 2026 DE.PO.NA PRAHA s.r.o. | Všechna práva vyhrazena.
+    </div>
+</footer>
+
+</body>
+</html>
