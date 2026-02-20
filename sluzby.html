@@ -4,244 +4,173 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Služby | DEPONA PRAHA s.r.o.</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         :root {
-            --depona-blue: #0A224D;
-            --depona-yellow: #FFC107;
-            --white: #FFFFFF;
-            --light-bg: #fdfdfd;
+            --primary: #0A224D;
+            --accent: #FFC107;
+            --white: #ffffff;
+            --bg: #f4f7fa;
+            --radius: 28px;
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
 
-        body {
-            font-family: 'Montserrat', sans-serif;
-            margin: 0;
-            color: #333;
-            line-height: 1.6;
-            background-color: var(--white);
+        * { box-sizing: border-box; }
+        body { margin: 0; font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--bg); color: var(--primary); line-height: 1.6; }
+
+        /* --- NAVIGACE (STEJNÁ VELIKOST) --- */
+        header {
+            position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
+            width: 95%; max-width: 1200px; height: 100px;
+            background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(12px);
+            border-radius: var(--radius); display: flex; align-items: center;
+            justify-content: space-between; padding: 0 40px; z-index: 10000;
+            box-shadow: 0 10px 40px rgba(10, 34, 77, 0.1); border: 1px solid rgba(255, 255, 255, 0.5);
         }
+        .logo-img { height: 80px; width: auto; }
+        .nav-menu { display: flex; gap: 30px; align-items: center; }
+        .nav-menu a { text-decoration: none; color: var(--primary); font-weight: 700; font-size: 0.95rem; text-transform: uppercase; }
+        .btn-nav { background: var(--primary); color: white !important; padding: 14px 28px; border-radius: 18px; transition: var(--transition); }
+        .btn-nav:hover { background: var(--accent); color: var(--primary) !important; }
 
-        /* Navigace - PŘESNĚ DLE VAŠEHO VZORU */
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 5%;
-            background: var(--white);
-            border-bottom: 4px solid var(--depona-blue);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .logo-text {
-            font-size: 2.4rem;
-            font-weight: 900;
-            color: var(--depona-blue);
-            text-decoration: none;
-            letter-spacing: 1px;
-        }
-
-        .logo-text span { color: var(--depona-yellow); }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--depona-blue);
-            font-weight: 700;
-            margin-left: 35px;
-            text-transform: uppercase;
-            font-size: 1rem;
-            transition: 0.3s;
-        }
-
-        .nav-links a:hover { color: var(--depona-yellow); }
-
-        /* Hero sekce pro Služby */
-        .services-hero {
-            height: 400px;
-            background: linear-gradient(rgba(10, 34, 77, 0.7), rgba(10, 34, 77, 0.7)), url('https://i.imgur.com/EFvYX6r.jpeg') center/cover;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
+        /* --- HERO --- */
+        .hero-sub {
+            padding: 180px 5% 60px;
             text-align: center;
+            background: linear-gradient(180deg, #e9eff5 0%, var(--bg) 100%);
         }
+        .hero-sub h1 { font-size: clamp(2.5rem, 5vw, 3.5rem); font-weight: 800; margin-bottom: 20px; }
+        .hero-sub p { font-size: 1.2rem; max-width: 800px; margin: 0 auto; opacity: 0.8; }
 
-        .services-hero h1 { font-size: 4rem; font-weight: 900; text-transform: uppercase; margin: 0; }
-
-        /* Obsah služeb */
-        .services-container {
-            padding: 100px 5%;
-            max-width: 1600px;
-            margin: 0 auto;
-        }
-
+        /* --- DETAILY SLUŽEB --- */
+        .details-section { max-width: 1200px; margin: 0 auto 100px; padding: 0 20px; }
+        
         .service-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 80px;
-            margin-bottom: 120px;
+            gap: 60px;
             align-items: center;
+            margin-bottom: 80px;
+            background: var(--white);
+            padding: 40px;
+            border-radius: var(--radius);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
         }
 
         .service-row:nth-child(even) { direction: rtl; }
-        .service-row:nth-child(even) .service-text { direction: ltr; }
+        .service-row:nth-child(even) .text-side { direction: ltr; }
 
-        .service-text h2 { color: var(--depona-blue); font-size: 2.8rem; font-weight: 900; margin-bottom: 30px; text-transform: uppercase; }
-        .service-text p { font-size: 1.2rem; color: #555; margin-bottom: 30px; }
+        .image-side img { width: 100%; border-radius: 20px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
         
-        .feature-list { list-style: none; padding: 0; }
-        .feature-list li { 
-            margin-bottom: 15px; 
-            font-weight: 700; 
-            font-size: 1.1rem; 
-            display: flex; 
-            align-items: center; 
-        }
-        .feature-list li::before { 
-            content: '●'; 
-            color: var(--depona-yellow); 
-            margin-right: 15px; 
-            font-size: 1.4rem; 
+        .text-side h2 { font-size: 2rem; font-weight: 800; margin-bottom: 20px; color: var(--primary); }
+        .text-side h2 span { color: var(--accent); display: block; font-size: 1rem; text-transform: uppercase; letter-spacing: 2px; }
+
+        .highlight-box {
+            background: var(--bg);
+            padding: 20px;
+            border-left: 5px solid var(--accent);
+            margin: 20px 0;
+            font-style: italic;
         }
 
-        .service-image img {
-            width: 100%;
-            border-radius: 20px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
-        }
+        /* --- FOOTER --- */
+        .bottom-bar { background: var(--primary); color: white; padding: 40px 5%; }
+        .bottom-content { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; font-size: 0.85rem; }
+        .bottom-item h5 { color: var(--accent); text-transform: uppercase; margin: 0 0 10px 0; font-size: 0.9rem; }
+        .copyright-line { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.05); font-size: 0.8rem; opacity: 0.5; }
 
-        /* Patička - PŘESNĚ DLE VAŠEHO VZORU */
-        .contact-footer {
-            background: var(--depona-blue);
-            color: var(--white);
-            padding: 100px 5% 50px;
-            display: grid;
-            grid-template-columns: 1fr 1fr 1.5fr;
-            gap: 60px;
-        }
-
-        .footer-col h4 { 
-            color: var(--depona-yellow); 
-            margin-bottom: 30px; 
-            text-transform: uppercase; 
-            font-weight: 800;
-            font-size: 1.3rem;
-        }
-
-        .footer-col p { margin: 15px 0; color: #d0d0d0; font-size: 1.1rem; }
-
-        .map-wrapper {
-            width: 100%;
-            height: 380px;
-            border-radius: 15px;
-            overflow: hidden;
-            border: 3px solid rgba(255,255,255,0.1);
-        }
-
-        .copyright {
-            grid-column: 1 / -1;
-            text-align: center;
-            padding-top: 60px;
-            margin-top: 40px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            font-size: 0.9rem;
-            color: #777;
-        }
-
-        @media (max-width: 1024px) {
-            .contact-footer { grid-template-columns: 1fr 1fr; }
-            .map-wrapper { grid-column: 1 / -1; }
-            .service-row { grid-template-columns: 1fr; gap: 40px; }
+        @media (max-width: 900px) {
+            .service-row { grid-template-columns: 1fr; gap: 30px; }
             .service-row:nth-child(even) { direction: ltr; }
-        }
-
-        @media (max-width: 768px) {
-            nav { flex-direction: column; text-align: center; }
-            .nav-links { margin-top: 20px; }
-            .nav-links a { margin: 0 10px; font-size: 0.8rem; }
-            .services-hero h1 { font-size: 2.5rem; }
-            .service-text h2 { font-size: 2rem; }
+            header { padding: 0 20px; }
+            .nav-menu { display: none; }
+            .bottom-content { grid-template-columns: repeat(2, 1fr); }
         }
     </style>
 </head>
 <body>
 
-<nav>
-    <a href="index.html" class="logo-text">DEPONA<span>.</span></a>
-    <div class="nav-links">
-        <a href="sluzby.html">Služby</a>
+<header>
+    <a href="index.html"><img src="https://i.imgur.com/3qsX7vf.png" alt="DEPONA" class="logo-img"></a>
+    <nav class="nav-menu">
+        <a href="sluzby.html" style="color: var(--accent);">Služby</a>
         <a href="cenik.html">Ceník</a>
         <a href="rozhodnuti.html">Rozhodnutí</a>
-        <a href="kontakt.html">Kontakt</a>
-    </div>
-</nav>
-
-<header class="services-hero">
-    <h1>Naše služby</h1>
+        <a href="kontakt.html" class="btn-nav">Kontakt</a>
+    </nav>
 </header>
 
-<div class="services-container">
+<section class="hero-sub">
+    <h1>Flexibilní a spolehlivé služby</h1>
+    <p>Jsme váš profesionální partner s dlouholetými zkušenostmi v oblasti odpadového hospodářství a autodopravy.</p>
+</section>
+
+<section class="details-section">
     <div class="service-row">
-        <div class="service-text">
-            <h2>Kontejnerová doprava</h2>
-            <p>Jsme specialisté na přistavení kontejnerů pro veškeré druhy odpadů. Pokrýváme celou Prahu a blízké okolí s důrazem na přesnost a spolehlivost.</p>
-            <ul class="feature-list">
-                <li>Kontejnery od 3m³ pro suť až po 40m³ pro velkoobjemový odpad</li>
-                <li>Rychlé přistavení a flexibilní termíny odvozu</li>
-                <li>Doprava písků, štěrků a betonových směsí</li>
-            </ul>
+        <div class="image-side">
+            <img src="https://i.imgur.com/IR8pvtn.jpeg" alt="Odvoz odpadu">
         </div>
-        <div class="service-image">
-            <img src="https://i.imgur.com/4zK1vcD.jpeg" alt="Kontejnerová doprava Depona">
+        <div class="text-side">
+            <h2><span>EKO LIKVIDACE</span>Odvoz a likvidace odpadu</h2>
+            <p>Likvidace odpadu je dnes klíčovým prvkem ochrany životního prostředí. Naše kompletní služby zahrnují profesionální odvoz a následnou ekologickou likvidaci.</p>
+            <div class="highlight-box">
+                "Přijedeme, přistavíme kontejner, následně odvezeme. Pro nás není žádný odpad problém!"
+            </div>
+            <p>Díky našim zkušenostem vám poradíme s výběrem vhodného kontejneru přesně podle množství vašeho odpadu. Jsme flexibilní a dokážeme se plně přizpůsobit vašim požadavkům.</p>
         </div>
     </div>
 
     <div class="service-row">
-        <div class="service-text">
-            <h2>Příjem a likvidace odpadů</h2>
-            <p>V naší provozovně Kunratice provozujeme certifikované zařízení pro nakládání s odpady. Vše probíhá v souladu s nejpřísnějšími ekologickými normami.</p>
-            <ul class="feature-list">
-                <li>Uložení stavební suti, betonů a asfaltů</li>
-                <li>Likvidace výkopové zeminy a kamení</li>
-                <li>Provoz dle aktuálního povolení MHMP (do 30.6.2025)</li>
-            </ul>
+        <div class="image-side">
+            <img src="https://i.imgur.com/534uSXU.jpeg" alt="Kontejnerová doprava">
         </div>
-        <div class="service-image">
-            <img src="https://i.imgur.com/WDWzWu5.jpeg" alt="Likvidace odpadu Kunratice">
+        <div class="text-side">
+            <h2><span>AUTODOPRAVA</span>Doprava a odvoz materiálů</h2>
+            <p>Kontejner je nezbytný pro každou stavbu či rekonstrukci. Ušetří vám náklady i starosti s nakládkou. Nabízíme přistavení kontejnerů různých velikostí dle vašich potřeb.</p>
+            <ul>
+                <li>Odvoz stavební suti a stavebního odpadu</li>
+                <li>Dovoz písku, štěrku a recyklátů</li>
+                <li>Přeprava sypkých a dalších materiálů</li>
+            </ul>
+            <p>Náš vozový park průběžně inovujeme, abychom vám zajistili co nejkvalitnější a nejbezpečnější služby.</p>
         </div>
     </div>
+
+    <div class="service-row">
+        <div class="image-side">
+            <img src="https://i.imgur.com/f2QHe71.jpeg" alt="Zemní práce a technika">
+        </div>
+        <div class="text-side">
+            <h2><span>PROFESIONÁLOVÉ</span>Kvalitní technika a zázemí</h2>
+            <p>K dispozici máme veškerou potřebnou techniku ve velmi dobrém stavu. Realizujeme zemní práce, výkopy a úpravy terénu profesionálními stroji.</p>
+            <p><strong>DE.PO.NA Praha, s.r.o.</strong> je symbolem pro spolehlivost. Rádi vám vyhovíme i v individuálních požadavcích.</p>
+            <a href="kontakt.html" class="btn-nav" style="display: inline-block; margin-top: 20px;">Mám zájem o službu</a>
+        </div>
+    </div>
+</section>
+
+<div class="bottom-bar">
+    <div class="bottom-content">
+        <div class="bottom-item">
+            <h5><i class="fa-solid fa-location-dot"></i> Provozovna</h5>
+            <p>ulice Pramenná<br>148 00 Praha 4 – Kunratice</p>
+        </div>
+        <div class="bottom-item">
+            <h5><i class="fa-solid fa-fingerprint"></i> Identifikace</h5>
+            <p><strong>IČZ:</strong> CZA00597<br><strong>IČ:</strong> 27208036</p>
+        </div>
+        <div class="bottom-item">
+            <h5><i class="fa-solid fa-map-pin"></i> Poloha GPS</h5>
+            <p>49.9967667N<br>14.4802833E</p>
+        </div>
+        <div class="bottom-item">
+            <h5><i class="fa-solid fa-building-columns"></i> Fakturace</h5>
+            <p><strong>DIČ:</strong> CZ27208036<br>DE.PO.NA PRAHA, s.r.o.</p>
+        </div>
+    </div>
+    <div class="copyright-line">© 2026 DE.PO.NA PRAHA s.r.o. | VŠECHNA PRÁVA VYHRAZENA.</div>
 </div>
-
-<footer class="contact-footer">
-    <div class="footer-col">
-        <h4>Společnost</h4>
-        <p><strong>DE.PO.NA PRAHA s.r.o.</strong></p>
-        <p>Specialista na autodopravu a nakládání s odpady. Provozovna Kunratice funguje na základě prodlouženého usnesení MHMP 2013094/2024.</p>
-        <p><strong>IČO:</strong> 27208036</p>
-    </div>
-
-    <div class="footer-col">
-        <h4>Dispečink</h4>
-        <p><strong>Adresa:</strong> Pramenná 3, 148 00 Praha 4</p>
-        <p><strong>Mobil:</strong> 777 349 001</p>
-        <p><strong>Otevírací doba:</strong><br>Po – Pá: 7:00 – 15:30<br>So: 8:00 – 13:00</p>
-    </div>
-
-    <div class="footer-col">
-        <h4>Naše poloha</h4>
-        <div class="map-wrapper">
-            <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2564.123!2d14.475!3d50.012!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTDCsDAwJzQzLjIiTiAxNMKwMjgNMzAuMCJF!5e0!3m2!1scs!2scz!4v1710000000000" 
-                width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
-            </iframe>
-        </div>
-    </div>
-
-    <div class="copyright">
-        © 2026 DE.PO.NA PRAHA s.r.o. | Všechna práva vyhrazena.
-    </div>
-</footer>
 
 </body>
 </html>
