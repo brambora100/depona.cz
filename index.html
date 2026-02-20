@@ -1,554 +1,144 @@
 <!DOCTYPE html>
-
 <html lang="cs">
-
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>DEPONA PRAHA s.r.o. | Odvoz, Likvidace, Prodej</title>
-
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
-
+    <title>DEPONA PRAHA s.r.o. | Kontejnerová doprava</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-
         :root {
-
-            --depona-blue: #0A224D;
-
-            --depona-yellow: #FFC107;
-
-            --white: #FFFFFF;
-
-            --light-bg: #fdfdfd;
-
+            --primary: #0A224D;
+            --accent: #FFC107;
+            --white: #ffffff;
+            --bg: #f4f7fa;
+            --radius: 28px;
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
 
+        * { box-sizing: border-box; }
+        body { margin: 0; font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--bg); color: var(--primary); }
 
-
-        body {
-
-            font-family: 'Montserrat', sans-serif;
-
-            margin: 0;
-
-            color: #333;
-
-            line-height: 1.6;
-
-            background-color: var(--white);
-
+        /* --- NAVIGACE --- */
+        header {
+            position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
+            width: 95%; max-width: 1200px; height: 100px;
+            background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(12px);
+            border-radius: var(--radius); display: flex; align-items: center;
+            justify-content: space-between; padding: 0 40px; z-index: 10000;
+            box-shadow: 0 10px 40px rgba(10, 34, 77, 0.1); border: 1px solid rgba(255, 255, 255, 0.5);
         }
+        .logo-img { height: 80px; width: auto; }
+        .nav-menu { display: flex; gap: 30px; align-items: center; }
+        .nav-menu a { text-decoration: none; color: var(--primary); font-weight: 700; font-size: 0.95rem; text-transform: uppercase; }
+        .btn-nav { background: var(--primary); color: white !important; padding: 14px 28px; border-radius: 18px; transition: var(--transition); }
+        .btn-nav:hover { background: var(--accent); color: var(--primary) !important; }
 
-
-
-
-        nav {
-
-            display: flex;
-
-            justify-content: space-between;
-
-            align-items: center;
-
-            padding: 20px 5%;
-
-            background: var(--white);
-
-            border-bottom: 4px solid var(--depona-blue);
-
-            position: sticky;
-
-            top: 0;
-
-            z-index: 1000;
-
-        }
-
-
-
-        .logo-text {
-
-            font-size: 2.4rem;
-
-            font-weight: 900;
-
-            color: var(--depona-blue);
-
-            text-decoration: none;
-
-            letter-spacing: 1px;
-
-        }
-
-
-
-        .logo-text span { color: var(--depona-yellow); }
-
-
-
-        .nav-links a {
-
-            text-decoration: none;
-
-            color: var(--depona-blue);
-
-            font-weight: 700;
-
-            margin-left: 35px;
-
-            text-transform: uppercase;
-
-            font-size: 1rem;
-
-            transition: 0.3s;
-
-        }
-
-
-
-        .nav-links a:hover { color: var(--depona-yellow); }
-
-
-
-
+        /* --- HERO S TEXTEM --- */
         .hero {
-
-            height: 650px;
-
-            background: linear-gradient(rgba(10, 34, 77, 0.4), rgba(10, 34, 77, 0.4)), url('https://i.imgur.com/EFvYX6r.jpeg') center/cover;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            color: white;
-
-            text-align: center;
-
+            height: 65vh;
+            background: linear-gradient(rgba(10, 34, 77, 0.5), rgba(10, 34, 77, 0.3)), 
+                        url('https://i.imgur.com/VZnOJh9.jpeg') center/cover no-repeat;
+            display: flex; align-items: center; justify-content: center; text-align: center; color: white; padding-top: 100px;
         }
+        .hero h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 800; margin: 0; text-shadow: 0 4px 15px rgba(0,0,0,0.3); }
+        .hero p { font-size: 1.4rem; margin-top: 15px; opacity: 0.9; font-weight: 400; }
 
-
-
-        .hero h1 { font-size: clamp(2.5rem, 8vw, 5rem); font-weight: 900; margin: 0; text-transform: uppercase; line-height: 1.1; }
-
-        .hero p { font-size: 1.6rem; margin: 25px 0; max-width: 900px; }
-
-        .hero-tags { font-weight: 700; color: var(--depona-yellow); font-size: 1.4rem; margin-bottom: 20px; letter-spacing: 4px; }
-
-
-
-
-        .stats-bar {
-
-            background: var(--depona-blue);
-
-            color: white;
-
-            display: flex;
-
-            justify-content: space-evenly;
-
-            padding: 80px 5%;
-
-            text-align: center;
-
+        /* --- ROZCESTNÍK --- */
+        .navigation-grid {
+            max-width: 1400px; margin: -80px auto 100px; padding: 0 20px;
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; position: relative; z-index: 10;
         }
-
-
-
-        .stat-item h2 { font-size: 4rem; color: var(--depona-yellow); margin: 0; font-weight: 900; }
-
-        .stat-item p { text-transform: uppercase; font-weight: 700; margin-top: 10px; font-size: 1.2rem; letter-spacing: 1px; }
-
-
-
-
-        .quick-nav {
-
-            padding: 120px 5%;
-
-            position: relative;
-
-            background: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)), url('https://i.imgur.com/b3IGa9p.jpeg') center/cover fixed;
-
-            text-align: center;
-
+        .nav-card {
+            background: var(--white); padding: 40px 20px; border-radius: var(--radius);
+            text-decoration: none; color: var(--primary); box-shadow: 0 20px 50px rgba(0,0,0,0.05);
+            transition: var(--transition); display: flex; flex-direction: column; align-items: center; text-align: center;
         }
+        .nav-card i { font-size: 3rem; color: var(--accent); margin-bottom: 20px; }
+        .nav-card h3 { font-size: 1.4rem; margin: 0 0 10px 0; text-transform: uppercase; font-weight: 800; }
+        .nav-card p { font-size: 0.9rem; opacity: 0.7; line-height: 1.4; margin: 0; }
+        .nav-card:hover { transform: translateY(-15px); background: var(--primary); color: white; }
 
+        /* --- SPODNÍ INFORMAČNÍ LIŠTA --- */
+        .bottom-bar { background: var(--primary); color: white; padding: 40px 5%; border-top: 1px solid rgba(255,255,255,0.1); }
+        .bottom-content { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; font-size: 0.85rem; }
+        .bottom-item h5 { color: var(--accent); text-transform: uppercase; margin: 0 0 10px 0; font-size: 0.9rem; }
+        .bottom-item p { margin: 0; opacity: 0.8; line-height: 1.5; }
+        .copyright-line { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.05); font-size: 0.8rem; opacity: 0.5; }
 
-
-        .quick-nav h2 { font-size: 2.8rem; margin-bottom: 60px; color: var(--depona-blue); font-weight: 900; position: relative; z-index: 2; }
-
-
-
-        .grid-cards {
-
-            display: grid;
-
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-
-            gap: 25px;
-
-            max-width: 1600px;
-
-            margin: 0 auto;
-
-            position: relative;
-
-            z-index: 2;
-
+        @media (max-width: 1100px) {
+            .navigation-grid { grid-template-columns: repeat(2, 1fr); }
+            .bottom-content { grid-template-columns: repeat(2, 1fr); }
         }
-
-
-
-        .card-link {
-
-            background: var(--white);
-
-            padding: 50px 40px;
-
-            border-radius: 15px;
-
-            text-decoration: none;
-
-            color: inherit;
-
-            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
-
-            transition: 0.4s;
-
-            border: 1px solid rgba(10, 34, 77, 0.1);
-
-            display: flex;
-
-            flex-direction: column;
-
-            justify-content: center;
-
+        @media (max-width: 700px) {
+            .navigation-grid { grid-template-columns: 1fr; }
+            .bottom-content { grid-template-columns: 1fr; text-align: center; }
         }
-
-
-
-        .card-link:hover {
-
-            transform: translateY(-10px);
-
-            background: var(--depona-blue);
-
-            color: white;
-
-        }
-
-
-
-        .card-link h3 { color: var(--depona-blue); font-size: 1.6rem; margin-bottom: 15px; text-transform: uppercase; transition: 0.3s; }
-
-        .card-link:hover h3 { color: var(--depona-yellow); }
-
-        
-
-        .card-link p { color: #666; font-size: 1rem; margin-bottom: 20px; transition: 0.3s; }
-
-        .card-link:hover p { color: #eee; }
-
-
-
-        .card-link .btn-arrow { color: var(--depona-yellow); font-weight: 800; font-size: 1.2rem; }
-
-
-
-
-        .contact-footer {
-
-            background: var(--depona-blue);
-
-            color: var(--white);
-
-            padding: 100px 5% 50px;
-
-            display: grid;
-
-            grid-template-columns: 1fr 1fr 1.5fr;
-
-            gap: 60px;
-
-        }
-
-
-
-        .footer-col h4 { 
-
-            color: var(--depona-yellow); 
-
-            margin-bottom: 30px; 
-
-            text-transform: uppercase; 
-
-            font-weight: 800;
-
-            font-size: 1.3rem;
-
-        }
-
-
-
-        .footer-col p { margin: 15px 0; color: #d0d0d0; font-size: 1.1rem; }
-
-
-
-        .map-wrapper {
-
-            width: 100%;
-
-            height: 380px;
-
-            border-radius: 15px;
-
-            overflow: hidden;
-
-            border: 3px solid rgba(255,255,255,0.1);
-
-        }
-
-
-
-        .copyright {
-
-            grid-column: 1 / -1;
-
-            text-align: center;
-
-            padding-top: 60px;
-
-            margin-top: 40px;
-
-            border-top: 1px solid rgba(255,255,255,0.1);
-
-            font-size: 0.9rem;
-
-            color: #777;
-
-        }
-
-
-
-        @media (max-width: 1024px) {
-
-            .contact-footer { grid-template-columns: 1fr 1fr; }
-
-            .map-wrapper { grid-column: 1 / -1; }
-
-        }
-
-
-
-        @media (max-width: 768px) {
-
-            .stats-bar { flex-direction: column; gap: 50px; }
-
-            .contact-footer { grid-template-columns: 1fr; }
-
-            nav { flex-direction: column; text-align: center; }
-
-            .nav-links { margin-top: 20px; }
-
-            .nav-links a { margin: 0 10px; font-size: 0.8rem; }
-
-        }
-
     </style>
-
 </head>
-
 <body>
 
-
-
-<nav>
-
-    <a href="index.html" class="logo-text">DEPONA<span>.</span></a>
-
-    <div class="nav-links">
-
+<header>
+    <a href="index.html"><img src="https://i.imgur.com/3qsX7vf.png" alt="DEPONA" class="logo-img"></a>
+    <nav class="nav-menu">
         <a href="sluzby.html">Služby</a>
-
         <a href="cenik.html">Ceník</a>
-
         <a href="rozhodnuti.html">Rozhodnutí</a>
-
-        <a href="kontakt.html">Kontakt</a>
-
-    </div>
-
-</nav>
-
-
+        <a href="kontakt.html" class="btn-nav">Poptat kontejner</a>
+    </nav>
+</header>
 
 <section class="hero">
-
     <div class="hero-content">
-
-        <div class="hero-tags">ODVOZ • LIKVIDACE • PRODEJ</div>
-
         <h1>DEPONA PRAHA s.r.o.</h1>
-
-        <p>Spolehlivé služby v oblasti odpadového hospodářství od roku 1995.</p>
-
-        <a href="kontakt.html" style="text-decoration: none; background: var(--depona-yellow); color: var(--depona-blue); padding: 25px 50px; font-weight: 900; border-radius: 8px; text-transform: uppercase; display: inline-block; font-size: 1.2rem; transition: 0.3s;">Poptat kontejner</a>
-
+        <p>Váš partner pro odpady a sypké materiály od roku 1995</p>
     </div>
-
 </section>
 
-
-
-<section class="stats-bar">
-
-    <div class="stat-item">
-
-        <h2>99%</h2>
-
-        <p>Spolehlivost</p>
-
-    </div>
-
-    <div class="stat-item">
-
-        <h2>95%</h2>
-
-        <p>Flexibilita</p>
-
-    </div>
-
-    <div class="stat-item">
-
-        <h2>30 let</h2>
-
-        <p>Zkušeností</p>
-
-    </div>
-
+<section class="navigation-grid">
+    <a href="sluzby.html" class="nav-card">
+        <i class="fa-solid fa-truck"></i>
+        <h3>Služby</h3>
+        <p>Kontejnerová doprava / Zemní práce</p>
+    </a>
+    <a href="cenik.html" class="nav-card">
+        <i class="fa-solid fa-coins"></i>
+        <h3>Ceník</h3>
+        <p>Písky / Štěrky / Recykláty</p>
+    </a>
+    <a href="rozhodnuti.html" class="nav-card">
+        <i class="fa-solid fa-file-shield"></i>
+        <h3>Rozhodnutí</h3>
+        <p>Legislativa / Povolení / Dokumenty</p>
+    </a>
+    <a href="kontakt.html" class="nav-card">
+        <i class="fa-solid fa-phone"></i>
+        <h3>Kontakt</h3>
+        <p>Telefon / Email / Kde nás najdete</p>
+    </a>
 </section>
 
-
-
-<section class="quick-nav">
-
-    <h2>Kam pokračovat?</h2>
-
-    <div class="grid-cards">
-
-        <a href="sluzby.html" class="card-link">
-
-            <h3>Služby</h3>
-
-            <p>Přehled kontejnerové dopravy a likvidace odpadů.</p>
-
-            <span class="btn-arrow">Více informací →</span>
-
-        </a>
-
-        <a href="cenik.html" class="card-link">
-
-            <h3>Ceník</h3>
-
-            <p>Ceny písků, štěrků a uložení stavební suti.</p>
-
-            <span class="btn-arrow">Zobrazit ceník →</span>
-
-        </a>
-
-        <a href="rozhodnuti.html" class="card-link">
-
-            <h3>Rozhodnutí</h3>
-
-            <p>Dokumentace MHMP k provozu zařízení (do 30.6.2025).</p>
-
-            <span class="btn-arrow">Dokumenty →</span>
-
-        </a>
-
-        <a href="kontakt.html" class="card-link">
-
-            <h3>Kontakt</h3>
-
-            <p>Kde nás najdete a jak nás můžete kontaktovat.</p>
-
-            <span class="btn-arrow">Spojte se s námi →</span>
-
-        </a>
-
-    </div>
-
-</section>
-
-
-
-<footer class="contact-footer">
-
-    <div class="footer-col">
-
-        <h4>Společnost</h4>
-
-        <p><strong>DE.PO.NA PRAHA s.r.o.</strong></p>
-
-        <p>Specialista na autodopravu a nakládání s odpady. Provozovna Kunratice funguje na základě prodlouženého usnesení MHMP 2013094/2024.</p>
-
-        <p><strong>IČO:</strong> 27208036</p>
-
-    </div>
-
-
-
-    <div class="footer-col">
-
-        <h4>Dispečink</h4>
-
-        <p><strong>Adresa:</strong> Pramenná, 148 00 Praha 4</p>
-
-        <p><strong>Mobil:</strong> 777 349 001</p>
-
-        <p><strong>Otevírací doba:</strong><br>Po – Pá: 7:00 – 15:30<br>So: 8:00 – 13:00</p>
-
-    </div>
-
-
-
-    <div class="footer-col">
-
-        <h4>Naše poloha</h4>
-
-        <div class="map-wrapper">
-
-            <iframe 
-
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2564.0326075931816!2d14.484214476906232!3d50.01077711826079!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470b91653f885f09%3A0xc66580f4f7281c7e!2sPramenn%C3%A1%2C%20148%2000%20Praha%204!5e0!3m2!1scs!2scz!4v1709123456789!5m2!1scs!2scz" 
-
-                width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
-
-            </iframe>
-
+<div class="bottom-bar">
+    <div class="bottom-content">
+        <div class="bottom-item">
+            <h5><i class="fa-solid fa-location-dot"></i> Provozovna</h5>
+            <p>ulice Pramenná<br>148 00 Praha 4 – Kunratice</p>
         </div>
-
+        <div class="bottom-item">
+            <h5><i class="fa-solid fa-fingerprint"></i> Identifikace</h5>
+            <p><strong>IČZ:</strong> CZA00597<br><strong>IČ:</strong> 27208036</p>
+        </div>
+        <div class="bottom-item">
+            <h5><i class="fa-solid fa-map-pin"></i> Poloha GPS</h5>
+            <p>49.9967667N<br>14.4802833E</p>
+        </div>
+        <div class="bottom-item">
+            <h5><i class="fa-solid fa-building-columns"></i> Fakturace</h5>
+            <p><strong>DIČ:</strong> CZ27208036<br>DE.PO.NA PRAHA, s.r.o.</p>
+        </div>
     </div>
-
-
-
-    <div class="copyright">
-
-        © 2026 DE.PO.NA PRAHA s.r.o. | Všechna práva vyhrazena.
-
-    </div>
-
-</footer>
-
-
+    <div class="copyright-line">© 2026 DE.PO.NA PRAHA s.r.o. | VŠECHNA PRÁVA VYHRAZENA.</div>
+</div>
 
 </body>
-
 </html>
