@@ -4,111 +4,156 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rozhodnutí | DEPONA PRAHA s.r.o.</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         :root {
-            --depona-blue: #0A224D;
-            --depona-yellow: #FFC107;
-            --white: #FFFFFF;
+            --primary: #0A224D;
+            --accent: #FFC107;
+            --white: #ffffff;
+            --bg: #f4f7fa;
+            --radius: 28px;
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
 
-        body { font-family: 'Montserrat', sans-serif; margin: 0; background-color: #f4f7f9; color: #333; }
+        * { box-sizing: border-box; }
+        body { margin: 0; font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--bg); color: var(--primary); line-height: 1.6; }
 
-        /* Navigace */
-        nav {
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 20px 5%; background: var(--white); border-bottom: 4px solid var(--depona-blue);
-            position: sticky; top: 0; z-index: 1000;
+        /* --- NAVIGACE --- */
+        header {
+            position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
+            width: 95%; max-width: 1200px; height: 100px;
+            background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(12px);
+            border-radius: var(--radius); display: flex; align-items: center;
+            justify-content: space-between; padding: 0 40px; z-index: 10000;
+            box-shadow: 0 10px 40px rgba(10, 34, 77, 0.1); border: 1px solid rgba(255, 255, 255, 0.5);
         }
-        .logo-text { font-size: 2.4rem; font-weight: 900; color: var(--depona-blue); text-decoration: none; letter-spacing: 1px; }
-        .logo-text span { color: var(--depona-yellow); }
-        .nav-links a { text-decoration: none; color: var(--depona-blue); font-weight: 700; margin-left: 35px; text-transform: uppercase; font-size: 1rem; transition: 0.3s; }
-        .nav-links a:hover { color: var(--depona-yellow); }
+        .logo-img { height: 80px; width: auto; }
+        .nav-menu { display: flex; gap: 30px; align-items: center; }
+        .nav-menu a { text-decoration: none; color: var(--primary); font-weight: 700; font-size: 0.95rem; text-transform: uppercase; }
+        .btn-nav { background: var(--primary); color: white !important; padding: 14px 28px; border-radius: 18px; transition: var(--transition); }
+        .btn-nav:hover { background: var(--accent); color: var(--primary) !important; }
 
-        /* Hero sekce */
-        .hero {
-            height: 200px; background: var(--depona-blue);
-            display: flex; align-items: center; justify-content: center; color: white;
+        /* --- HERO --- */
+        .hero-sub {
+            padding: 180px 5% 60px;
+            text-align: center;
+            background: linear-gradient(180deg, #e9eff5 0%, var(--bg) 100%);
         }
-        .hero h1 { font-size: 3rem; font-weight: 900; text-transform: uppercase; margin: 0; }
+        .hero-sub h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; margin-bottom: 20px; text-transform: uppercase; }
+        .hero-sub p { font-size: 1.1rem; max-width: 800px; margin: 0 auto; opacity: 0.8; }
 
-        /* Galerie fotek */
-        .document-container {
-            padding: 60px 5%;
-            max-width: 1000px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            gap: 40px;
+        /* --- SEKCE S DOKUMENTY --- */
+        .documents-container {
+            max-width: 1100px;
+            margin: 0 auto 100px;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
         }
-        .document-container img {
+
+        .doc-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: var(--radius);
+            box-shadow: 0 15px 45px rgba(0,0,0,0.05);
+            text-align: center;
+            transition: var(--transition);
+            border: 1px solid rgba(10, 34, 77, 0.05);
+        }
+
+        .doc-card:hover { transform: translateY(-8px); box-shadow: 0 20px 50px rgba(10, 34, 77, 0.1); }
+
+        .doc-photo {
             width: 100%;
             height: auto;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            border-radius: 5px;
-            background: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            cursor: zoom-in;
         }
 
-        /* Patička */
-        .footer-dark { background: #071630; color: white; padding: 80px 5% 40px; display: grid; grid-template-columns: 1fr 1fr 1.5fr; gap: 60px; margin-top: 60px; }
-        .footer-col h4 { color: var(--depona-yellow); margin-bottom: 25px; text-transform: uppercase; font-weight: 900; font-size: 1.2rem; }
-        .footer-col p { margin: 10px 0; color: #e0e0e0; }
-        .map-container { width: 100%; height: 300px; border-radius: 10px; overflow: hidden; }
-        .footer-bottom { grid-column: 1 / -1; text-align: center; padding-top: 40px; border-top: 1px solid rgba(255,255,255,0.1); color: #888; font-size: 0.9rem; }
+        .doc-info { margin-top: 25px; text-align: left; padding-left: 10px; border-left: 3px solid var(--accent); }
+        .doc-info h3 { font-size: 1.1rem; margin: 0; font-weight: 800; color: var(--primary); }
+        .doc-info p { font-size: 0.85rem; margin: 5px 0 0; opacity: 0.7; font-weight: 600; line-height: 1.4; }
 
-        @media (max-width: 1024px) { .footer-dark { grid-template-columns: 1fr; } }
+        /* --- FOOTER --- */
+        .bottom-bar { background: var(--primary); color: white; padding: 40px 5%; }
+        .bottom-content { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; font-size: 0.85rem; }
+        .bottom-item h5 { color: var(--accent); text-transform: uppercase; margin: 0 0 10px 0; font-size: 0.9rem; }
+        .bottom-item p { margin: 0; opacity: 0.8; }
+        .copyright-line { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.05); font-size: 0.8rem; opacity: 0.5; }
+
+        @media (max-width: 850px) {
+            .documents-container { grid-template-columns: 1fr; }
+            header { padding: 0 20px; }
+            .nav-menu { display: none; }
+            .bottom-content { grid-template-columns: repeat(2, 1fr); }
+        }
     </style>
 </head>
 <body>
 
-<nav>
-    <a href="index.html" class="logo-text">DEPONA<span>.</span></a>
-    <div class="nav-links">
+<header>
+    <a href="index.html"><img src="https://i.imgur.com/3qsX7vf.png" alt="DEPONA" class="logo-img"></a>
+    <nav class="nav-menu">
         <a href="sluzby.html">Služby</a>
         <a href="cenik.html">Ceník</a>
-        <a href="rozhodnuti.html">Rozhodnutí</a>
-        <a href="kontakt.html">Kontakt</a>
-    </div>
-</nav>
-
-<header class="hero">
-    <h1>Úřední rozhodnutí</h1>
+        <a href="rozhodnuti.html" style="color: var(--accent);">Rozhodnutí</a>
+        <a href="kontakt.html" class="btn-nav">Kontakt</a>
+    </nav>
 </header>
 
-<main class="document-container">
-    <img src="image_11bc57.png" alt="Rozhodnutí 1">
-    <img src="image_11c6c5.png" alt="Rozhodnutí 2">
-    <img src="image_124663.png" alt="Rozhodnutí 3">
-</main>
+<section class="hero-sub">
+    <h1>Legislativa a povolení</h1>
+    <p>Jsme plně certifikované zařízení k nakládání s odpady. Oficiální dokument vydaný Magistrátem hl. m. Prahy dne 04. 12. 2024.</p>
+</section>
 
-<footer class="footer-dark">
-    <div class="footer-col">
-        <h4>Společnost</h4>
-        <p><strong>DE.PO.NA PRAHA s.r.o.</strong></p>
-        <p>Provozovna Kunratice funguje na základě prodlouženého usnesení MHMP 2013094/2024.</p>
-        <p><strong>IČO:</strong> 27208036</p>
-    </div>
-
-    <div class="footer-col">
-        <h4>Dispečink</h4>
-        <p><strong>Adresa:</strong> Pramenná 3, 148 00 Praha 4</p>
-        <p><strong>Mobil:</strong> 777 349 001</p>
-        <p><strong>Otevírací doba:</strong><br>
-           Po – Pá: 7:00 – 15:30<br>
-           So: 8:00 – 13:00</p>
-    </div>
-
-    <div class="footer-col">
-        <h4>Naše poloha</h4>
-        <div class="map-container">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2564.085811326442!2d14.4823485!3d50.0090403!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470b93d0383783a5%3A0x70529944d6c469f3!2zUHJhbWVubsOhIDMsIDE0OCAwMCBQcmFoYS1LdW5yYXRpY2U!5e0!3m2!1scs!2scz!4v1710000000000!5m2!1scs!2scz" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+<section class="documents-container">
+    <div class="doc-card">
+        <a href="ODKAZ_NA_TVOJI_FOTKU_1" target="_blank">
+            <img src="https://depona.cz/wp-content/uploads/2025/04/usneseni_2025_1-768x1024.jpeg" alt="Rozhodnutí strana 1" class="doc-photo">
+        </a>
+        <div class="doc-info">
+            <h3>ROZHODNUTÍ – STRANA 1</h3>
+            <p><strong>Vydáno dne:</strong> 04. 12. 2024</p>
+            <p><strong>Orgán:</strong> Magistrát hlavního města Prahy<br>Odbor ochrany prostředí</p>
         </div>
     </div>
 
-    <div class="footer-bottom">
-        © 2026 DE.PO.NA PRAHA s.r.o. | Všechna práva vyhrazena.
+    <div class="doc-card">
+        <a href="ODKAZ_NA_TVOJI_FOTKU_2" target="_blank">
+            <img src="https://depona.cz/wp-content/uploads/2025/04/usneseni_2025_2-768x1024.jpeg" alt="Rozhodnutí strana 2" class="doc-photo">
+        </a>
+        <div class="doc-info">
+            <h3>ROZHODNUTÍ – STRANA 1</h3>
+            <p><strong>Vydáno dne:</strong> 04. 12. 2024</p>
+            <p><strong>Orgán:</strong> Magistrát hlavního města Prahy<br>Odbor ochrany prostředí</p>
+        </div>
     </div>
-</footer>
+</section>
+
+<div class="bottom-bar">
+    <div class="bottom-content">
+        <div class="bottom-item">
+            <h5><i class="fa-solid fa-location-dot"></i> Provozovna</h5>
+            <p>ulice Pramenná<br>148 00 Praha 4 – Kunratice</p>
+        </div>
+        <div class="bottom-item">
+            <h5><i class="fa-solid fa-fingerprint"></i> Identifikace</h5>
+            <p><strong>IČZ:</strong> CZA00597<br><strong>IČ:</strong> 27208036</p>
+        </div>
+        <div class="bottom-item">
+            <h5><i class="fa-solid fa-map-pin"></i> Poloha GPS</h5>
+            <p>49.9967667N<br>14.4802833E</p>
+        </div>
+        <div class="bottom-item">
+            <h5><i class="fa-solid fa-building-columns"></i> Fakturace</h5>
+            <p><strong>DIČ:</strong> CZ27208036<br>DE.PO.NA PRAHA, s.r.o.</p>
+        </div>
+    </div>
+    <div class="copyright-line">© 2026 DE.PO.NA PRAHA s.r.o. | VŠECHNA PRÁVA VYHRAZENA.</div>
+</div>
 
 </body>
 </html>
