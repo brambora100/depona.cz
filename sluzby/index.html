@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DE.PO.NA Praha, s.r.o. | Odvoz odpadu a kontejnerová doprava</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --brand-green: #3672FF; /* Moderní jasná modrá / v kódu definovaná jako green */
+            --brand-green-hover: #2B5BCC;
+            --brand-orange: #f39c12; /* Výstražná oranžová pro dopravu */
+            --dark-bg: #1a252f; /* Moderní temná břidlicová */
+            --light-bg: #f8fafc; /* Čisté, lehce namodralé pozadí */
+            --text-main: #334155;
+            --text-muted: #64748b;
+            --shadow: 0 10px 30px -10px rgba(0,0,0,0.08);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            color: var(--text-main);
+            background-color: #ffffff;
+            line-height: 1.7;
+        }
+
+        /* --- HLAVIČKA --- */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            color: var(--dark-bg);
+            text-decoration: none;
+            z-index: 1001;
+        }
+
+        .logo span {
+            color: var(--brand-green);
+        }
+
+        /* Skryté ovládací prvky pro mobilní menu */
+        .menu-btn, .menu-icon {
+            display: none;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+            align-items: center;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 500;
+            font-size: 15px;
+            transition: var(--transition);
+        }
+
+        nav ul li a:hover, nav ul li a.active {
+            color: var(--brand-green);
+        }
+
+        .nav-cta {
+            background-color: var(--dark-bg);
+            color: #fff !important;
+            padding: 8px 16px;
+            border-radius: 6px;
+        }
+
+        .nav-cta:hover {
+            background-color: var(--brand-green);
+        }
+
+        /* --- HERO SEKCE PRO SLUŽBY --- */
+        .hero {
+            padding: 140px 20px;
+            background: linear-gradient(rgba(26, 37, 47, 0.75), rgba(26, 37, 47, 0.85)), 
+                        url('https://i.imgur.com/lBMgOTO.jpeg') no-repeat center center/cover;
+            background-attachment: fixed;
+            text-align: center;
+            position: relative;
+            color: #fff;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 800;
+            color: #ffffff;
+            line-height: 1.2;
+            max-width: 800px;
+            margin: 0 auto 20px;
+            letter-spacing: -1px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: #cbd5e1;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* --- STYLY PRO DETAILNÍ SEKCÍ SLUŽEB --- */
+        .services-detail {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Poměr 1:1 pro text a obrázky */
+        .service-block {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            margin-bottom: 100px;
+        }
+
+        .service-text span {
+            color: var(--brand-green);
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 14px;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .service-text h2 {
+            font-size: 36px;
+            color: var(--dark-bg);
+            font-weight: 800;
+            margin-bottom: 20px;
+            letter-spacing: -0.5px;
+        }
+
+        .service-text p {
+            color: var(--text-main);
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+        .service-quote {
+            background-color: var(--light-bg);
+            border-left: 4px solid var(--brand-green);
+            padding: 18px 20px;
+            margin: 25px 0;
+            font-weight: 500;
+            color: var(--dark-bg);
+            border-radius: 0 8px 8px 0;
+            border-top: 1px solid #e2e8f0;
+            border-right: 1px solid #e2e8f0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .service-features-list {
+            list-style: none;
+            margin-top: 20px;
+            margin-bottom: 30px;
+        }
+
+        .service-features-list li {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 12px;
+            font-size: 15px;
+            color: var(--text-main);
+        }
+
+        .service-features-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--brand-green);
+            font-weight: 800;
+            font-size: 16px;
+        }
+
+        .service-image-container {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .service-image-container img {
+            width: 100%;
+            height: auto;
+            max-height: 550px;
+            object-fit: cover;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+        }
+
+        .btn-primary {
+            background-color: var(--brand-green);
+            color: white;
+            padding: 14px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(54, 114, 255, 0.2);
+            transition: var(--transition);
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--brand-green-hover);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--dark-bg);
+            padding: 14px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            border: 1px solid #cbd5e1;
+            transition: var(--transition);
+            display: inline-block;
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--light-bg);
+            border-color: #94a3b8;
+        }
+
+        /* --- INFORMAČNÍ SEKCE NA SPODKU --- */
+        .fleet-info {
+            background-color: var(--light-bg);
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 40px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .fleet-info h3 {
+            font-size: 24px;
+            color: var(--dark-bg);
+            margin-bottom: 15px;
+            font-weight: 800;
+        }
+
+        .fleet-info p {
+            max-width: 800px;
+            margin: 0 auto 25px;
+            color: var(--text-muted);
+        }
+
+        /* --- PATIČKA --- */
+        footer {
+            background-color: var(--dark-bg);
+            color: #f1f5f9;
+            padding: 80px 20px 40px;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 40px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid #334155;
+        }
+
+        .footer-brand h3 {
+            font-size: 24px;
+            color: white;
+            margin-bottom: 15px;
+        }
+
+        .footer-brand h3 span {
+            color: var(--brand-green);
+        }
+
+        .footer-brand p {
+            color: #94a3b8;
+            max-width: 350px;
+        }
+
+        .footer-links h4 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+        .footer-links ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .footer-links ul li a {
+            color: #94a3b8;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links ul li a:hover {
+            color: white;
+        }
+
+        .footer-contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #94a3b8;
+            margin-bottom: 12px;
+            font-size: 15px;
+        }
+
+        .footer-contact-item a {
+            color: #94a3b8;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-contact-item a:hover {
+            color: white;
+        }
+
+        .footer-contact-item p {
+            color: #94a3b8;
+            font-size: 15px;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .footer-contact-item p a {
+            color: #94a3b8;
+            text-decoration: underline;
+        }
+
+        .footer-contact-item p a:hover {
+            color: white;
+        }
+
+        .bottom-bar {
+            max-width: 1200px;
+            margin: 30px auto 0;
+            display: flex;
+            justify-content: space-between;
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        /* PLOVOUCÍ CALL TLAČÍTKO PRO MOBILY */
+        .floating-call {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--brand-green);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            box-shadow: 0 10px 25px rgba(54, 114, 255, 0.4);
+            z-index: 999;
+            display: none;
+        }
+
+        /* --- RESPONSIVITA & HAMBURGER MENU --- */
+        @media (max-width: 968px) {
+            .hero h1 { font-size: 36px; }
+            .service-block { 
+                grid-template-columns: 1fr !important; 
+                gap: 40px; 
+            }
+            .service-block .service-image-container {
+                order: 2;
+            }
+            .service-block .service-text {
+                order: 1;
+            }
+            .footer-container { grid-template-columns: 1fr; }
+            .floating-call { display: block; }
+            .hero { background-attachment: scroll; }
+        }
+
+        @media (max-width: 768px) {
+            /* Zobrazení ikonky hamburgeru */
+            .menu-icon {
+                display: block;
+                cursor: pointer;
+                padding: 10px;
+                z-index: 1002;
+            }
+
+            .menu-icon .navicon {
+                background: var(--dark-bg);
+                display: block;
+                height: 2px;
+                position: relative;
+                transition: background .2s ease-out;
+                width: 24px;
+            }
+
+            .menu-icon .navicon:before, .menu-icon .navicon:after {
+                background: var(--dark-bg);
+                content: '';
+                display: block;
+                height: 100%;
+                position: absolute;
+                transition: all .2s ease-out;
+                width: 100%;
+            }
+
+            .menu-icon .navicon:before { top: 7px; }
+            .menu-icon .navicon:after { top: -7px; }
+
+            /* Transformace navigace na mobilní menu přes celou šířku pod hlavičkou */
+            nav {
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height .3s ease-out;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: rgba(255, 255, 255, 0.98);
+                box-shadow: 0 15px 20px rgba(0,0,0,0.05);
+                border-bottom: 1px solid #e2e8f0;
+                z-index: 999;
+            }
+
+            nav ul {
+                flex-direction: column;
+                padding: 20px;
+                gap: 0;
+                align-items: stretch;
+            }
+
+            nav ul li {
+                width: 100%;
+            }
+
+            nav ul li a {
+                display: block;
+                padding: 12px 15px;
+                font-size: 16px;
+                border-bottom: 1px solid #f1f5f9;
+            }
+
+            nav ul li:last-child a {
+                border-bottom: none;
+                margin-top: 10px;
+                text-align: center;
+            }
+
+            /* Logika otevření menu pomocí CSS checkboxu */
+            .menu-btn:checked ~ nav {
+                max-height: 400px;
+            }
+
+            /* Animace ikonky na křížek při otevření */
+            .menu-btn:checked ~ .menu-icon .navicon {
+                background: transparent;
+            }
+
+            .menu-btn:checked ~ .menu-icon .navicon:before {
+                transform: rotate(-45deg);
+                top: 0;
+            }
+
+            .menu-btn:checked ~ .menu-icon .navicon:after {
+                transform: rotate(45deg);
+                top: 0;
+            }
+
+            .bottom-bar { flex-direction: column; gap: 10px; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <a href="tel:+420777349447" class="floating-call">📞 Volat dispečink</a>
+
+    <header>
+        <div class="header-container">
+            <a href="/uvod" class="logo">DE.PO.NA <span>PRAHA</span></a>
+            
+            <input class="menu-btn" type="checkbox" id="menu-btn" />
+            <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
+            
+            <nav>
+                <ul>
+                    <li><a href="/uvod">Úvod</a></li>
+                    <li><a href="/sluzby" class="active">Služby</a></li>
+                    <li><a href="/o-nas">O nás</a></li>
+                    <li><a href="/cenik">Ceník</a></li>
+                    <li><a href="/rozhodnuti">Rozhodnutí</a></li>
+                    <li><a href="/kontakt" class="nav-cta">Kontakt</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div style="position: relative; z-index: 2;">
+                <h1>Flexibilní a Spolehlivé Služby</h1>
+                <p>Profesionální řešení pro odvoz odpadu, přistavení kontejnerů a spolehlivou dopravu materiálů po celé Praze a okolí.</p>
+            </div>
+        </section>
+
+        <section class="services-detail">
+            
+            <div class="service-block">
+                <div class="service-text">
+                    <span>Ekologické nakládání s odpady</span>
+                    <h2>Odvoz a Likvidace Odpadu</h2>
+                    <p>Likvidace odpadu, ať už jakéhokoliv, je dnes velmi důležitým prvkem ochrany životního prostředí. Kompletní služby naší firmy zahrnují profesionální odvoz a ekologickou likvidaci odpadu.</p>
+                    <p>Pokud máte větší množství odpadu, který je třeba odvézt a následně zlikvidovat, je ideálním řešením firma, která se odvozem odpadu aktivně zabývá. Právě podle celkového množství je potřeba domluvit si vhodný kontejner, který Vám rádi přistavíme. Jsme flexibilní a spolehlivá firma s dlouholetými zkušenostmi, a proto neváhejte a kontaktujte nás.</p>
+                    <p>Dokážeme se plně přizpůsobit Vašim časovým i technologickým požadavkům a rádi Vám ve všem vyhovíme. Dopravu kompletně realizujeme pomocí našeho vlastního vozového parku.</p>
+                    
+                    <div class="service-quote">
+                        „Přijedeme, přistavíme kontejner, následně odvezeme.“ Potřebujete se zbavit odpadu? Pro nás žádný problém!
+                    </div>
+                    <a href="/kontakt" class="btn-primary">Poptat přistavení kontejneru</a>
+                </div>
+                <div class="service-image-container">
+                    <img src="https://i.imgur.com/lBMgOTO.jpeg" alt="Odvoz a likvidace odpadu - DE.PO.NA Praha">
+                </div>
+            </div>
+
+            <div class="service-block">
+                <div class="service-image-container" style="grid-column: 1;">
+                    <img src="https://i.imgur.com/slXlZT3.jpeg" alt="Kontejnerová doprava a služby - DE.PO.NA Praha">
+                </div>
+                <div class="service-text" style="grid-column: 2;">
+                    <span>Doprava a odvoz materiálů</span>
+                    <h2>Kontejnerová Doprava a Služby</h2>
+                    <p>Kontejner je velmi důležitý prvek v průběhu každé stavby nebo rozsáhlé rekonstrukce. Ušetří Vám nejen značné finanční náklady, ale také spoustu starostí s průběžnou nakládkou a následným nahromaděným odpadem.</p>
+                    <p>Nabízíme komplexní služby v oblasti nákladní kontejnerové dopravy. Po vzájemné oboustranné domluvě spolehlivě přistavíme kontejnery různých velikostí přesně podle specifik Vašeho projektu a dle našich aktuálních možností.</p>
+                    
+                    <h3 style="margin-top: 25px; color: var(--dark-bg); font-weight: 700;">Co vše zajišťujeme:</h3>
+                    <ul class="service-features-list">
+                        <li><strong>Odvoz stavebního odpadu</strong>, sutí a sypkých materiálů</li>
+                        <li><strong>Dovoz písku, štěrku</strong>, kačírku nebo zeminy</li>
+                        <li><strong>Přistavení kontejnerů</strong> různých velikostí dle Vaší potřeby</li>
+                    </ul>
+                    <a href="/cenik" class="btn-secondary">Prohlédnout ceník služeb</a>
+                </div>
+            </div>
+
+            <div class="fleet-info">
+                <h3>Moderní a inovovaný vozový park</h3>
+                <p>Náš vozový park a veškerou potřebnou techniku průběžně inovujeme, udržujeme ve skvělém technickém stavu a modernizujeme. Důvodem je zajištění maximální bezpečnosti, spolehlivosti a co nejkvalitnější služby pro Vás.</p>
+                <a href="/kontakt" class="btn-primary">Napište nám nebo zavolejte</a>
+            </div>
+
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-brand">
+                <h3>DE.PO.NA <span>PRAHA</span></h3>
+                <p>Moderní nakládání s odpady, spolehlivá doprava sutí a prodej písků se zárukou kvality již od roku 1995.</p>
+            </div>
+            
+            <div class="footer-links">
+                <h4>Navigace</h4>
+                <ul>
+                    <li><a href="/uvod">Úvod</a></li>
+                    <li><a href="/sluzby">Služby</a></li>
+                    <li><a href="/o-nas">O nás</a></li>
+                    <li><a href="/cenik">Ceník</a></li>
+                    <li><a href="/rozhodnuti">Rozhodnutí</a></li>
+                    <li><a href="/kontakt">Kontakt</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-links">
+                <h4>Kontakt</h4>
+                <div class="footer-contact-item">
+                    <span>📞</span>
+                    <a href="tel:+420777349447">+420 777 349 447</a>
+                </div>
+                <div class="footer-contact-item">
+                    <span>✉️</span>
+                    <a href="mailto:depona@depona.cz">depona@depona.cz</a>
+                </div>
+                <div class="footer-contact-item" style="align-items: flex-start;">
+                    <span>📍</span>
+                    <p>
+                        <a href="https://mapy.com/cs/turisticka?source=addr&id=11678078&ds=1&x=14.4846966&y=49.9953794&z=17" target="_blank">
+                            ulice Pramenná,<br>148 00 Praha 4 – Kunratice
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="bottom-bar">
+            <p>&copy; 2026 DE.PO.NA Praha, s.r.o. Všechna práva vyhrazena.</p>
+            <p>IČZ: CZA00597</p>
+        </div>
+    </footer>
+
+</body>
+</html>
