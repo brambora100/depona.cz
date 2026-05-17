@@ -10,11 +10,11 @@
     
     <style>
         :root {
-            --brand-green: #3672FF; /* Moderní jasná modrá */
+            --brand-green: #3672FF; /* Moderní jasná modrá / v kódu definovaná jako green */
             --brand-green-hover: #2B5BCC;
-            --brand-orange: #f39c12; 
-            --dark-bg: #1a252f; 
-            --light-bg: #f8fafc; 
+            --brand-orange: #f39c12; /* Výstražná oranžová pro dopravu */
+            --dark-bg: #1a252f; /* Moderní temná břidlicová */
+            --light-bg: #f8fafc; /* Čisté, lehce namodralé pozadí */
             --text-main: #334155;
             --text-muted: #64748b;
             --shadow: 0 10px 30px -10px rgba(0,0,0,0.08);
@@ -68,6 +68,7 @@
             color: var(--brand-green);
         }
 
+        /* Skryté ovládací prvky pro mobilní menu */
         .menu-btn, .menu-icon {
             display: none;
         }
@@ -105,7 +106,7 @@
         /* --- HERO SEKCE --- */
         .hero {
             padding: 140px 20px;
-            background: linear-gradient(rgba(26, 37, 47, 0.8), rgba(26, 37, 47, 0.9)), 
+            background: linear-gradient(rgba(26, 37, 47, 0.75), rgba(26, 37, 47, 0.85)), 
                         url('https://i.imgur.com/lBMgOTO.jpeg') no-repeat center center/cover;
             background-attachment: fixed;
             text-align: center;
@@ -453,6 +454,10 @@
             text-decoration: underline;
         }
 
+        .footer-contact-item p a:hover {
+            color: white;
+        }
+
         .bottom-bar {
             max-width: 1200px;
             margin: 30px auto 0;
@@ -462,6 +467,7 @@
             font-size: 14px;
         }
 
+        /* PLOVOUCÍ CALL TLAČÍTKO PRO MOBILY */
         .floating-call {
             position: fixed;
             bottom: 20px;
@@ -477,21 +483,19 @@
             display: none;
         }
 
-        /* --- RESPONSIVITA --- */
-        @media (max-width: 1024px) {
-            .team-grid { grid-template-columns: 1fr 1fr; }
-            .bottom-contact-grid { grid-template-columns: 1fr; }
-        }
-
-        @media (max-width: 768px) {
+        /* --- RESPONSIVITA & HAMBURGER MENU --- */
+        @media (max-width: 968px) {
             .hero h1 { font-size: 36px; }
             .quick-info-grid { grid-template-columns: 1fr; gap: 20px; }
             .team-grid { grid-template-columns: 1fr; }
+            .bottom-contact-grid { grid-template-columns: 1fr; }
             .footer-container { grid-template-columns: 1fr; }
             .floating-call { display: block; }
             .hero { background-attachment: scroll; }
             .contact-form-container, .billing-box { padding: 25px; }
+        }
 
+        @media (max-width: 768px) {
             .menu-icon {
                 display: block;
                 cursor: pointer;
@@ -540,6 +544,10 @@
                 padding: 20px;
                 gap: 0;
                 align-items: stretch;
+            }
+
+            nav ul li {
+                width: 100%;
             }
 
             nav ul li a {
@@ -595,7 +603,7 @@
                     <li><a href="/depona.cz/o-nas">O nás</a></li>
                     <li><a href="/depona.cz/cenik">Ceník</a></li>
                     <li><a href="/depona.cz/rozhodnuti">Rozhodnutí</a></li>
-                    <li><a href="/depona.cz/kontakt" class="active">Kontakt</a></li>
+                    <li><a href="/depona.cz/kontakt" class="nav-cta">Kontakt</a></li>
                 </ul>
             </nav>
         </div>
@@ -773,7 +781,7 @@
 
     <script>
         document.getElementById('workerContactForm').addEventListener('submit', async function(e) {
-            e.preventDefault(); // Stopnutí restartu stránky
+            e.preventDefault();
 
             const form = this;
             const submitBtn = document.getElementById('submitBtn');
@@ -782,7 +790,6 @@
             // Přesná adresa tvého nasazeného Cloudflare Workeru
             const workerUrl = 'https://depona-kontakt.bilcusadam.workers.dev/api/contact';
 
-            // Příprava JSON dat přesně tak, jak je index.js očekává
             const formData = {
                 name: document.getElementById('name').value,
                 email: document.getElementById('email').value,
@@ -790,7 +797,6 @@
                 message: document.getElementById('message').value
             };
 
-            // Vizuální zámek tlačítka během odesílání
             submitBtn.disabled = true;
             submitBtn.innerText = 'Odesílám zprávu...';
             statusDiv.className = 'form-status';
@@ -806,22 +812,18 @@
                 });
 
                 if (response.ok) {
-                    // Úspěšný zápis do KV Storage
                     statusDiv.innerText = '✨ Zpráva byla úspěšně odeslána. Brzy se vám ozveme!';
                     statusDiv.className = 'form-status success';
-                    form.reset(); // Vyčištění políček
+                    form.reset();
                 } else {
-                    // Worker vrátil chybový kód (např. 400 nebo 500)
                     const errData = await response.json().catch(() => ({}));
                     throw new Error(errData.error || 'Server vrátil chybu.');
                 }
             } catch (error) {
-                // Selhalo připojení nebo Worker nebyl dostupný
                 statusDiv.innerText = '❌ Zprávu se nepodařilo odeslat. Zkuste to prosím znovu, nebo nás kontaktujte telefonicky.';
                 statusDiv.className = 'form-status error';
                 console.error('Chyba odesílání:', error);
             } finally {
-                // Odemknutí tlačítka zpět
                 submitBtn.disabled = false;
                 submitBtn.innerText = 'Odeslat poptávku / zprávu';
             }
