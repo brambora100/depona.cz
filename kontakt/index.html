@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DE.PO.NA Praha, s.r.o. | Odvoz odpadu a kontejnerová doprava</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --brand-green: #3672FF; /* Moderní jasná modrá */
+            --brand-green-hover: #2B5BCC;
+            --brand-orange: #f39c12; 
+            --dark-bg: #1a252f; 
+            --light-bg: #f8fafc; 
+            --text-main: #334155;
+            --text-muted: #64748b;
+            --shadow: 0 10px 30px -10px rgba(0,0,0,0.08);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            color: var(--text-main);
+            background-color: #ffffff;
+            line-height: 1.7;
+        }
+
+        /* --- HLAVIČKA --- */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            color: var(--dark-bg);
+            text-decoration: none;
+            z-index: 1001;
+        }
+
+        .logo span {
+            color: var(--brand-green);
+        }
+
+        .menu-btn, .menu-icon {
+            display: none;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+            align-items: center;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 500;
+            font-size: 15px;
+            transition: var(--transition);
+        }
+
+        nav ul li a:hover, nav ul li a.active {
+            color: var(--brand-green);
+        }
+
+        .nav-cta {
+            background-color: var(--dark-bg);
+            color: #fff !important;
+            padding: 8px 16px;
+            border-radius: 6px;
+        }
+
+        .nav-cta:hover {
+            background-color: var(--brand-green);
+        }
+
+        /* --- HERO SEKCE --- */
+        .hero {
+            padding: 140px 20px;
+            background: linear-gradient(rgba(26, 37, 47, 0.8), rgba(26, 37, 47, 0.9)), 
+                        url('https://i.imgur.com/lBMgOTO.jpeg') no-repeat center center/cover;
+            background-attachment: fixed;
+            text-align: center;
+            position: relative;
+            color: #fff;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 800;
+            color: #ffffff;
+            line-height: 1.2;
+            max-width: 800px;
+            margin: 0 auto 20px;
+            letter-spacing: -1px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: #cbd5e1;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* --- HLAVNÍ KONTAKTNÍ SEKCE --- */
+        .contact-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 20px;
+        }
+
+        /* Rychlé info karty (Otevírací doba + Provozovna) */
+        .quick-info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .quick-card {
+            background-color: var(--light-bg);
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            display: flex;
+            gap: 20px;
+        }
+
+        .quick-card-icon {
+            font-size: 28px;
+            background: #fff;
+            padding: 15px;
+            border-radius: 10px;
+            height: 60px;
+            width: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+        }
+
+        .quick-card h3 {
+            font-size: 20px;
+            color: var(--dark-bg);
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .quick-card p {
+            font-size: 15px;
+            color: var(--text-main);
+            margin-bottom: 6px;
+        }
+
+        /* Tým / Lidé */
+        .section-title {
+            font-size: 28px;
+            color: var(--dark-bg);
+            font-weight: 800;
+            margin-bottom: 30px;
+            letter-spacing: -0.5px;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 10px;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .member-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .member-card:hover {
+            transform: translateY(-5px);
+            border-color: #cbd5e1;
+        }
+
+        .member-role {
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--brand-green);
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .member-card h4 {
+            font-size: 22px;
+            color: var(--dark-bg);
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .member-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 15px;
+            transition: var(--transition);
+        }
+
+        .member-link:hover {
+            color: var(--brand-green);
+        }
+
+        .member-link span {
+            font-size: 16px;
+        }
+
+        /* Spodní rozvržení: Formulář + Fakturace */
+        .bottom-contact-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 40px;
+        }
+
+        .contact-form-container {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 8px;
+            color: var(--dark-bg);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-size: 15px;
+            color: var(--text-main);
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--brand-green);
+            box-shadow: 0 0 0 3px rgba(54, 114, 255, 0.1);
+        }
+
+        .btn-submit {
+            background-color: var(--brand-green);
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            font-size: 15px;
+            font-weight: 600;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: var(--transition);
+            width: 100%;
+        }
+
+        .btn-submit:hover {
+            background-color: var(--brand-green-hover);
+        }
+
+        .btn-submit:disabled {
+            background-color: var(--text-muted);
+            cursor: not-allowed;
+        }
+
+        /* Status zprávy po odeslání */
+        .form-status {
+            margin-top: 15px;
+            padding: 12px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            display: none;
+            text-align: center;
+        }
+
+        .form-status.success {
+            display: block;
+            background-color: #d1fae5;
+            color: #065f46;
+            border: 1px solid #a7f3d0;
+        }
+
+        .form-status.error {
+            display: block;
+            background-color: #fee2e2;
+            color: #991b1b;
+            border: 1px solid #fecaca;
+        }
+
+        /* Fakturační blok */
+        .billing-box {
+            background: var(--light-bg);
+            border: 1px solid #e2e8f0;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+        }
+
+        .billing-data-list {
+            list-style: none;
+            margin-top: 20px;
+        }
+
+        .billing-data-list li {
+            margin-bottom: 12px;
+            font-size: 15px;
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px dashed #e2e8f0;
+            padding-bottom: 8px;
+        }
+
+        .billing-data-list li strong {
+            color: var(--dark-bg);
+        }
+
+        /* --- PATIČKA --- */
+        footer {
+            background-color: var(--dark-bg);
+            color: #f1f5f9;
+            padding: 80px 20px 40px;
+            margin-top: 80px;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 40px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid #334155;
+        }
+
+        .footer-brand h3 {
+            font-size: 24px;
+            color: white;
+            margin-bottom: 15px;
+        }
+
+        .footer-brand h3 span {
+            color: var(--brand-green);
+        }
+
+        .footer-brand p {
+            color: #94a3b8;
+            max-width: 350px;
+        }
+
+        .footer-links h4 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+        .footer-links ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .footer-links ul li a {
+            color: #94a3b8;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links ul li a:hover {
+            color: white;
+        }
+
+        .footer-contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #94a3b8;
+            margin-bottom: 12px;
+            font-size: 15px;
+        }
+
+        .footer-contact-item a {
+            color: #94a3b8;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-contact-item a:hover {
+            color: white;
+        }
+
+        .footer-contact-item p {
+            color: #94a3b8;
+            font-size: 15px;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .footer-contact-item p a {
+            color: #94a3b8;
+            text-decoration: underline;
+        }
+
+        .bottom-bar {
+            max-width: 1200px;
+            margin: 30px auto 0;
+            display: flex;
+            justify-content: space-between;
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        .floating-call {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--brand-green);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            box-shadow: 0 10px 25px rgba(54, 114, 255, 0.4);
+            z-index: 999;
+            display: none;
+        }
+
+        /* --- RESPONSIVITA --- */
+        @media (max-width: 1024px) {
+            .team-grid { grid-template-columns: 1fr 1fr; }
+            .bottom-contact-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 36px; }
+            .quick-info-grid { grid-template-columns: 1fr; gap: 20px; }
+            .team-grid { grid-template-columns: 1fr; }
+            .footer-container { grid-template-columns: 1fr; }
+            .floating-call { display: block; }
+            .hero { background-attachment: scroll; }
+            .contact-form-container, .billing-box { padding: 25px; }
+
+            .menu-icon {
+                display: block;
+                cursor: pointer;
+                padding: 10px;
+                z-index: 1002;
+            }
+
+            .menu-icon .navicon {
+                background: var(--dark-bg);
+                display: block;
+                height: 2px;
+                position: relative;
+                transition: background .2s ease-out;
+                width: 24px;
+            }
+
+            .menu-icon .navicon:before, .menu-icon .navicon:after {
+                background: var(--dark-bg);
+                content: '';
+                display: block;
+                height: 100%;
+                position: absolute;
+                transition: all .2s ease-out;
+                width: 100%;
+            }
+
+            .menu-icon .navicon:before { top: 7px; }
+            .menu-icon .navicon:after { top: -7px; }
+
+            nav {
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height .3s ease-out;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: rgba(255, 255, 255, 0.98);
+                box-shadow: 0 15px 20px rgba(0,0,0,0.05);
+                border-bottom: 1px solid #e2e8f0;
+                z-index: 999;
+            }
+
+            nav ul {
+                flex-direction: column;
+                padding: 20px;
+                gap: 0;
+                align-items: stretch;
+            }
+
+            nav ul li a {
+                display: block;
+                padding: 12px 15px;
+                font-size: 16px;
+                border-bottom: 1px solid #f1f5f9;
+            }
+
+            nav ul li:last-child a {
+                border-bottom: none;
+                margin-top: 10px;
+                text-align: center;
+            }
+
+            .menu-btn:checked ~ nav {
+                max-height: 400px;
+            }
+
+            .menu-btn:checked ~ .menu-icon .navicon {
+                background: transparent;
+            }
+
+            .menu-btn:checked ~ .menu-icon .navicon:before {
+                transform: rotate(-45deg);
+                top: 0;
+            }
+
+            .menu-btn:checked ~ .menu-icon .navicon:after {
+                transform: rotate(45deg);
+                top: 0;
+            }
+
+            .bottom-bar { flex-direction: column; gap: 10px; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <a href="tel:+420777349447" class="floating-call">📞 Volat dispečink</a>
+
+    <header>
+        <div class="header-container">
+            <a href="/depona.cz/" class="logo">DE.PO.NA <span>PRAHA</span></a>
+            
+            <input class="menu-btn" type="checkbox" id="menu-btn" />
+            <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
+            
+            <nav>
+                <ul>
+                    <li><a href="/depona.cz/">Úvod</a></li>
+                    <li><a href="/depona.cz/sluzby">Služby</a></li>
+                    <li><a href="/depona.cz/o-nas">O nás</a></li>
+                    <li><a href="/depona.cz/cenik">Ceník</a></li>
+                    <li><a href="/depona.cz/rozhodnuti">Rozhodnutí</a></li>
+                    <li><a href="/depona.cz/kontakt" class="active">Kontakt</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div style="position: relative; z-index: 2;">
+                <h1>Napište nám nebo zavolejte</h1>
+                <p>Podívejte se, jak a kde nás můžete kontaktovat. Jsme tu pro vás každý všední den i v sobotu dopoledne.</p>
+            </div>
+        </section>
+
+        <section class="contact-section">
+            
+            <div class="quick-info-grid">
+                <div class="quick-card">
+                    <div class="quick-card-icon">📍</div>
+                    <div>
+                        <h3>Naše provozovna</h3>
+                        <p><strong>ulice Pramenná</strong></p>
+                        <p>148 00 Praha 4 – Kunratice</p>
+                        <p style="margin-top: 10px; font-size: 13px; color: var(--text-muted);">
+                            <strong>GPS:</strong> 49.9967667N 14.4802833E
+                        </p>
+                    </div>
+                </div>
+
+                <div class="quick-card">
+                    <div class="quick-card-icon">🕒</div>
+                    <div>
+                        <h3>Otevírací doba</h3>
+                        <p><strong>Pondělí – Pátek:</strong> 7:00 – 15:30</p>
+                        <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 8px;">(případně dle předchozí dohody)</p>
+                        <p><strong>Sobota:</strong> 8:00 – 13:00</p>
+                    </div>
+                </div>
+            </div>
+
+            <h2 class="section-title">Provozní a vedení firmy</h2>
+            
+            <div class="team-grid">
+                <div class="member-card" style="border-top: 4px solid var(--brand-green);">
+                    <span class="member-role">Vedoucí provozu / Dispečink</span>
+                    <h4>Jakub Pospíchal</h4>
+                    <a href="tel:+420777349447" class="member-link">
+                        <span>📞</span> <strong>777 349 447</strong>
+                    </a>
+                    <a href="mailto:pospichal.depona@seznam.cz" class="member-link">
+                        <span>✉️</span> pospichal.depona@seznam.cz
+                    </a>
+                </div>
+
+                <div class="member-card">
+                    <span class="member-role">Jednatelka společnosti</span>
+                    <h4>Jarmila Bílková</h4>
+                    <a href="tel:+420777654748" class="member-link">
+                        <span>📞</span> 777 654 748
+                    </a>
+                    <a href="tel:+420602349447" class="member-link">
+                        <span>📞</span> 602 349 447
+                    </a>
+                    <a href="mailto:depona@depona.cz" class="member-link">
+                        <span>✉️</span> depona@depona.cz
+                    </a>
+                </div>
+
+                <div class="member-card">
+                    <span class="member-role">Jednatel společnosti</span>
+                    <h4>Bohuslav Bílek</h4>
+                    <a href="tel:+420777349001" class="member-link">
+                        <span>📞</span> 777 349 001
+                    </a>
+                    <a href="mailto:bilekbohuslav@seznam.cz" class="member-link">
+                        <span>✉️</span> bilekbohuslav@seznam.cz
+                    </a>
+                </div>
+            </div>
+
+            <div class="bottom-contact-grid">
+                <div class="contact-form-container">
+                    <h3 style="font-size: 22px; color: var(--dark-bg); margin-bottom: 5px; font-weight:700;">Napište nám</h3>
+                    <p style="color:var(--text-muted); font-size:14px; margin-bottom: 25px;">Máte dotaz k přistavení kontejneru nebo odběru materiálu? Zanechte nám zprávu.</p>
+                    
+                    <form id="workerContactForm">
+                        <div class="form-group">
+                            <label for="name">Jméno a příjmení / Firma</label>
+                            <input type="text" id="name" name="name" class="form-control" placeholder="Vaše jméno" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">E-mailová adresa</label>
+                            <input type="email" id="email" name="email" class="form-control" placeholder="jmeno@email.cz" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Telefonní číslo</label>
+                            <input type="tel" id="phone" name="phone" class="form-control" placeholder="+420 123 456 789">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Vaše zpráva</label>
+                            <textarea id="message" name="message" class="form-control" rows="5" placeholder="Dobrý den, poptávám kontejner na suť..." required></textarea>
+                        </div>
+                        <button type="submit" id="submitBtn" class="btn-submit">Odeslat poptávku / zprávu</button>
+                        
+                        <div id="formStatus" class="form-status"></div>
+                    </form>
+                </div>
+
+                <div class="billing-box">
+                    <h3 style="font-size: 22px; color: var(--dark-bg); font-weight:700; margin-bottom: 15px;">Fakturační údaje</h3>
+                    <p style="font-size: 15px;"><strong>DE.PO.NA PRAHA, s.r.o.</strong></p>
+                    <p style="font-size: 15px; color: var(--text-main);">Průmyslová 565<br>252 42 Jesenice u Prahy</p>
+                    
+                    <ul class="billing-data-list">
+                        <li><span>IČ:</span> <strong>27208036</strong></li>
+                        <li><span>DIČ:</span> <strong>CZ27208036</strong></li>
+                        <li><span>Sídlo firmy:</span> <strong>Jesenice u Prahy</strong></li>
+                        <li><span>Identifikátor IČZ:</span> <strong>CZA00597</strong></li>
+                    </ul>
+
+                    <div style="margin-top: 35px; border-top: 1px solid #e2e8f0; padding-top: 20px;">
+                        <h4 style="font-size: 16px; color:var(--dark-bg); margin-bottom: 5px;">Potřebujete poradit?</h4>
+                        <p style="font-size: 14px; color:var(--text-muted);">Pro rychlé nacenění dopravy nebo zjištění aktuální kapacity kontaktujte přímo našeho vedoucího provozu.</p>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-brand">
+                <h3>DE.PO.NA <span>PRAHA</span></h3>
+                <p>Moderní nakládání s odpady, spolehlivá doprava sutí a prodej písků se zárukou kvality již od roku 1995.</p>
+            </div>
+            
+            <div class="footer-links">
+                <h4>Navigace</h4>
+                <ul>
+                    <li><a href="/depona.cz/">Úvod</a></li>
+                    <li><a href="/depona.cz/sluzby">Služby</a></li>
+                    <li><a href="/depona.cz/o-nas">O nás</a></li>
+                    <li><a href="/depona.cz/cenik">Ceník</a></li>
+                    <li><a href="/depona.cz/rozhodnuti">Rozhodnutí</a></li>
+                    <li><a href="/depona.cz/kontakt">Kontakt</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-links">
+                <h4>Kontakt</h4>
+                <div class="footer-contact-item">
+                    <span>📞</span>
+                    <a href="tel:+420777349447">+420 777 349 447</a>
+                </div>
+                <div class="footer-contact-item">
+                    <span>✉️</span>
+                    <a href="mailto:depona@depona.cz">depona@depona.cz</a>
+                </div>
+                <div class="footer-contact-item" style="align-items: flex-start;">
+                    <span>📍</span>
+                    <p>
+                        <a href="https://mapy.com/cs/turisticka?source=addr&id=11678078&ds=1&x=14.4846966&y=49.9953794&z=17" target="_blank">
+                            ulice Pramenná,<br>148 00 Praha 4 – Kunratice
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="bottom-bar">
+            <p>&copy; 2026 DE.PO.NA Praha, s.r.o. Všechna práva vyhrazena.</p>
+            <p>IČZ: CZA00597</p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('workerContactForm').addEventListener('submit', async function(e) {
+            e.preventDefault(); // Stopnutí restartu stránky
+
+            const form = this;
+            const submitBtn = document.getElementById('submitBtn');
+            const statusDiv = document.getElementById('formStatus');
+
+            // Přesná adresa tvého nasazeného Cloudflare Workeru
+            const workerUrl = 'https://depona-kontakt.bilcusadam.workers.dev/api/contact';
+
+            // Příprava JSON dat přesně tak, jak je index.js očekává
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value || "Neuvedeno",
+                message: document.getElementById('message').value
+            };
+
+            // Vizuální zámek tlačítka během odesílání
+            submitBtn.disabled = true;
+            submitBtn.innerText = 'Odesílám zprávu...';
+            statusDiv.className = 'form-status';
+            statusDiv.style.display = 'none';
+
+            try {
+                const response = await fetch(workerUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                if (response.ok) {
+                    // Úspěšný zápis do KV Storage
+                    statusDiv.innerText = '✨ Zpráva byla úspěšně odeslána. Brzy se vám ozveme!';
+                    statusDiv.className = 'form-status success';
+                    form.reset(); // Vyčištění políček
+                } else {
+                    // Worker vrátil chybový kód (např. 400 nebo 500)
+                    const errData = await response.json().catch(() => ({}));
+                    throw new Error(errData.error || 'Server vrátil chybu.');
+                }
+            } catch (error) {
+                // Selhalo připojení nebo Worker nebyl dostupný
+                statusDiv.innerText = '❌ Zprávu se nepodařilo odeslat. Zkuste to prosím znovu, nebo nás kontaktujte telefonicky.';
+                statusDiv.className = 'form-status error';
+                console.error('Chyba odesílání:', error);
+            } finally {
+                // Odemknutí tlačítka zpět
+                submitBtn.disabled = false;
+                submitBtn.innerText = 'Odeslat poptávku / zprávu';
+            }
+        });
+    </script>
+
+</body>
+</html>
