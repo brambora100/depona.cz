@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256">
+  <rect width="256" height="256" rx="45" fill="#1a252f"/>
+  
+  <text x="50%" y="54%" 
+        font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" 
+        font-size="145" 
+        font-weight="900" 
+        fill="#3672FF" 
+        dominant-baseline="middle" 
+        text-anchor="middle">D</text>
+</svg>
